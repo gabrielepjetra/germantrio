@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The German Trio - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-custom sticky-top shadow-sm">
+    <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">TGT</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto py-3">
+        <li class="nav-item py-2"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+        <li class="nav-item py-2"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item py-2"><a class="nav-link" href="brands.html">Brands</a></li>
+        <li class="nav-item py-2"><a class="nav-link" href="compare.html">Compare</a></li>
+      </ul>
+    </div>
+    </div>
+    </nav>
+
+    <main class="container text-center py-5 py-lg-6">
+      <h1 class="display-4 fw-bold text-custom">The German Trio</h1>
+      <h3 class="fw-light text-custom mb-4">Audi, BMW or Mercedes-Benz?</h3>
+      <p class="lead mb-0">Compare Germany's three most iconic automotive brands.</p>
+    </main>
+    <section id="brands" class="container py-5">
+      <h2 class="text-center fw-bold mb-5 text-custom">German Brands</h2>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm text-center">
+            <img src="foto/audi.svg" class="card-img-top p-4" alt="Audi logo">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Audi</h5>
+              <p class="card-text">
+                Known for innovation, digital interiors and the legendary Quattro all-wheel drive.
+              </p>
+              <div class="mb-3">
+                <span class="badge badge-tech">Technology</span>
+                <span class="badge bg-secondary">FWD</span>
+                <span class="badge bg-secondary">Quattro</span>
+              </div>
+              <a href="discover/discover-audi.html" class="btn btn-outline-dark mt-auto w-100">Discover Audi</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm text-center">
+            <img src="foto/bmw.svg" class="card-img-top p-4" alt="BMW logo">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">BMW</h5>
+              <p class="card-text">
+                Focused on driving dynamics, powerful engines and sporty design.
+              </p>
+              <div class="mb-3">
+                <span class="badge bg-dark">Sporty</span>
+                <span class="badge bg-warning text-dark">RWD</span>
+                <span class="badge bg-warning text-dark">xDrive</span>
+              </div>
+              <a href="discover/discover-bmw.html" class="btn btn-outline-dark mt-auto w-100">Discover BMW</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm text-center">
+            <img src="foto/mercedes.svg" class="card-img-top p-4" alt="Mercedes logo">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Mercedes-Benz</h5>
+              <p class="card-text">
+                Synonymous with luxury, comfort and cutting-edge safety.
+              </p>
+              <div class="mb-3">
+                <span class="badge badge-lux">Luxury</span>
+                <span class="badge bg-info text-dark">Comfort</span>
+                <span class="badge badge-lux">4matic</span>
+              </div>
+              <a href="discover/discover-mercedes.html" class="btn btn-outline-dark mt-auto w-100">Discover Mercedes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="compare" class="py-5">
+      <div class="container">
+        <h2 class="text-center fw-bold mb-4 text-custom">Compare the Trio</h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover align-middle text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>Brand</th>
+                <th>Driving Feel</th>
+                <th>Technology</th>
+                <th>Comfort</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fw-bold">Audi</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>Tech lovers</td>
+              </tr>
+              <tr>
+                <td class="fw-bold">BMW</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+                <td>Driving enthusiasts</td>
+              </tr>
+              <tr>
+                <td class="fw-bold">Mercedes</td>
+                <td>⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>Luxury seekers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-custom text-white py-4">
+      <div class="container text-center">
+        <p class="mb-1 fw-bold">The German Trio</p>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

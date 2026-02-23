@@ -15,7 +15,7 @@ public class BrandController {
         this.brandRepository = brandRepository;
     }
 
-    @GetMapping({"/","/brands"})
+    @GetMapping("/brands")
     public String brands(Model model) {
         Iterable<Brand> allBrands = brandRepository.findAll();
 

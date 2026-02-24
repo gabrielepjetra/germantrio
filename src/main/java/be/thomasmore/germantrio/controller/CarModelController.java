@@ -24,7 +24,7 @@ public class CarModelController {
 
         model.addAttribute("cars", allCars);
 
-        return "carmodelslist";
+        return "carmodels";
     }
 
     @GetMapping("/carmodels/{id}")

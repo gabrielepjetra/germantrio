@@ -27,7 +27,10 @@ Dit is een website die ik gemaakt heb voor mensen die moelijk een keuze kunnen m
 
 # 💻 Functionale analyse
 ## 1. Wireframes
+### Dit is hoe mijn homepagina ongeveer eruit gaat zien.
 ![Homepage wireframe](readme/images/wireframe_homepage.jpg)
-Dit is hoe mijn homepagina ongeveer eruit gaat zien.
+### Dit is hoe ik wil dat mijn compare pagina ongeveer eruit ziet.
 ![Comparator tool page wireframe](readme/images/wireframe_compare.jpg)
-Dit is hoe ik wil dat mijn compare pagina ongeveer eruit ziet.
+## 2. Conceptueel Model
+### Dit is hoe dat mijn web app gaat werken
+![UML diagram](readme/images/uml_diagram_simple.png)

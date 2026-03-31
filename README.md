@@ -10,16 +10,19 @@ Dit is een website die ik gemaakt heb voor mensen die moelijk een keuze kunnen m
 
 ## 3. Personas
 ### 1) Lena - De praktische premium-zoeker
+![UML diagram](readme/images/Lena.png)
 * **Gebruikersgroep:** Gezinnen en praktisch ingestelde kopers die op zoek zijn naar een betrouwbare premium SUV (zoals de Audi Q3, BMW X1 of Mercedes-Benz GLA).
 * **Behoeften:** Transparante, direct vergelijkbare data over interieurruimte (kofferbakinhoud in liters), brandstofverbruik en standaard aanwezige veiligheidssystemen.
 * **Doelen:** Een veilige, ruime auto vinden die past bij het dagelijkse gezinsleven, zonder onnodig geld uit te geven aan dure pret-pakketten.
 * **Pijnpunten:** Ondoorzichtige en complexe optielijsten van Duitse merken, en de angst voor verborgen of hoge onderhoudskosten.
 ### 2) Felix - De prestatie-purist
+![UML diagram](readme/images/Felix.png)
 * **Gebruikersgroep:** Autoliefhebbers en sportieve rijders die puur gefocust zijn op rijdynamiek en harde cijfers (zoals de BMW M240i, Audi RS3 of Mercedes-AMG CLA 45).
 * **Behoeften:** Toegang tot rauwe, gedetailleerde technische specificaties in één overzicht (pk's, koppel, 0-100 km/u tijden, type aandrijflijn en gewicht).
 * **Doelen:** De best presterende en meest dynamische auto binnen het budget vinden om de ultieme rijbeleving te garanderen.
 * **Pijnpunten:** Gefrustreerd door marketingpraatjes en lifestyle-foto's op dealerwebsites; het kost te veel tijd om technische data op te graven en naast elkaar te leggen.
 ### 3) Marcus - De tech-gedreven exec
+![UML diagram](readme/images/Marcus.png)
 * **Gebruikersgroep:** Zakelijke veelrijders (leaserijders) die de overstap maken naar het hogere segment elektrische auto's (zoals de Mercedes-Benz EQE, BMW i5 of Audi A6 e-tron).
 * **Behoeften:** Duidelijk inzicht in accucapaciteit (kWh), DC-snellaadtijden (10-80%), werkelijke actieradius en de nieuwste rijhulpsystemen/infotainment.
 * **Doelen:** De ultieme, toekomstbestendige en comfortabele elektrische reisauto selecteren voor lange zakelijke ritten.
@@ -33,4 +36,4 @@ Dit is een website die ik gemaakt heb voor mensen die moelijk een keuze kunnen m
 ![Comparator tool page wireframe](readme/images/wireframe_compare.jpg)
 ## 2. Conceptueel Model
 ### Dit is hoe dat mijn web app gaat werken
-![UML diagram](readme/images/uml_diagram_simple.png)
+![UML diagram](readme/images/usecase.png)

@@ -17,17 +17,17 @@
     </div>
 
     <h4 class="text-center fw-bold mb-4">Models</h4>
-    <div id="brandCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="brandCarousel" class="carousel slide" data-bs-interval="false">
         <div class="carousel-inner">
             <div th:each="car, iterStat : ${cars}"
                  th:classappend="${iterStat.first} ? 'active'"
                  class="carousel-item text-center">
-                <a th:href="@{|/carmodels/${car.id}|}">
+                <a th:href="@{|/carmodels/${car.id}|}" class="text-decoration-none text-white">
                     <img th:src="${car.imageUrl}" th:alt="${car.name}"
                          class="d-block mx-auto mb-3"
-                         style="max-height: 220px; object-fit: contain;">
+                         style="max-height: 400px; width: 100%; object-fit: contain;">
                     <h5 class="fw-bold" th:text="${car.name}"></h5>
-                    <p class="text-muted" th:text="${car.horsepower} + ' HP — € ' + ${car.basePriceEur}"></p>
+                    <p class="text-light" th:text="${car.horsepower} + ' HP — € ' + ${car.basePriceEur}"></p>
                 </a>
             </div>
         </div>

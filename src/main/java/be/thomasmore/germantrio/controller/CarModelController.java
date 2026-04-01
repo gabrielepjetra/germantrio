@@ -21,11 +21,10 @@ public class CarModelController {
     @GetMapping("/carmodels/{id}")
     public String carModelDetail(@PathVariable long id, Model model) {
         Optional<CarModel> car = carModelRepository.findById(id);
-
         if (car.isPresent()) {
             model.addAttribute("car", car.get());
+            model.addAttribute("brandId", car.get().getBrand().getId());
         }
-
         return "carmodeldetail";
     }
 }

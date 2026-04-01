@@ -22,11 +22,11 @@
             <ul class="navbar-nav ms-auto py-3">
                 <li class="nav-item py-2">
                     <a class="nav-link" th:href="@{/}"
-                       th:classappend="${#httpServletRequest.requestURI == '/'} ? 'active'">Home</a>
+                       th:classappend="${currentUrl == '/'} ? 'active'">Home</a>
                 </li>
                 <li class="nav-item py-2">
                     <a class="nav-link" th:href="@{/brands}"
-                       th:classappend="${#httpServletRequest.requestURI.startsWith('/brands')} ? 'active'">Brands</a>
+                       th:classappend="${currentUrl.startsWith('/brands')} ? 'active'">Brands</a>
                 </li>
             </ul>
         </div>

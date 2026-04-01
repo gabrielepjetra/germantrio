@@ -17,7 +17,7 @@ public class CarModel {
     private Brand brand;
 
     private String name;
-    private String imageURL;
+    private String imageUrl;
     private String transmission;
     private String engineConfig;
     private String engineType;
@@ -57,12 +57,12 @@ public class CarModel {
         this.name = name;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getTransmission() {

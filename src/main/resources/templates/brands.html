@@ -1,77 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments :: head('Brands - The German Trio')}"></head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 <nav th:replace="~{fragments :: navbar}"></nav>
 
-  <main class="container py-5">
-    <h2 class="text-center fw-bold text-custom mb-5">German Automotive Brands</h2>
+<main class="container py-5 flex-grow-1">
+  <h2 class="text-center fw-bold text-custom mb-5">German Automotive Brands</h2>
 
-    <div class="row mb-4">
-      <div class="col-12 col-md-10 col-lg-8 mx-auto">
-        <div class="card h-100 shadow-sm text-center bg-card">
-          <img src="foto/audi.svg" class="card-img-top p-4" alt="Audi logo">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title fw-bold">Audi</h5>
-            <p class="card-text text-dark-gray">
-              Founded in 1909 by August Horch, Audi has always focused on technological innovation and precise engineering.  
-              Its famous motto “Vorsprung durch Technik” reflects the brand's philosophy of always being a step ahead in technology.  
-              In the 1980s, Audi revolutionized the market with its Quattro all-wheel-drive system.  
-              Today, it is known for elegant sedans, high-performance sports cars, and digitally advanced interiors.  
-              Audi has also heavily invested in electrification, with models like the e-tron and the RS e-tron GT.  
-              The company represents a combination of luxury, sportiness, and German innovation.
-            </p>
-            <p class="fw-semibold mt-auto">Flagship Model: Audi RS 6 Avant Performance</p>
-            <a href="discover/discover-audi.html" class="btn btn-outline-dark w-100 mt-3">Discover Audi</a>
-          </div>
+  <div th:each="brand : ${brands}" class="row mb-4">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto">
+      <div class="card h-100 shadow-sm text-center">
+        <img th:src="${brand.imgUrl}" class="card-img-top p-4" th:alt="${brand.name} + ' logo'" style="max-height: 160px; object-fit: contain;">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-bold" th:text="${brand.name}"></h5>
+          <p class="card-text" th:text="${brand.longDescription}"></p>
+          <p class="fw-semibold mt-auto">Flagship Model: <span th:text="${brand.flagship}"></span></p>
+          <a th:href="@{|/brands/${brand.id}|}" class="btn btn-outline-dark w-100 mt-3">Discover <span th:text="${brand.name}"></span></a>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="row mb-4">
-      <div class="col-12 col-md-10 col-lg-8 mx-auto">
-        <div class="card h-100 shadow-sm text-center bg-card">
-          <img src="foto/bmw.svg" class="card-img-top p-4" alt="BMW logo">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title fw-bold">BMW</h5>
-            <p class="card-text text-dark-gray">
-              Founded in 1916 as an aircraft engine manufacturer, BMW later specialized in motorcycles and luxury cars.  
-              The brand is famous for its philosophy of “Sheer Driving Pleasure,” emphasizing driver enjoyment and dynamic performance.  
-              In the 1970s, it introduced iconic models like the 3 Series, still a benchmark for sporty sedans today.  
-              BMW is synonymous with high performance and recognizable design, especially the aggressive lines of the M Series.  
-              Technology and innovation have always been at the core, with advanced driver assistance systems and efficient engines.  
-              Today, BMW combines luxury, sportiness, and comfort while maintaining the strong identity of German automotive tradition.
-            </p>
-            <p class="fw-semibold mt-auto">Flagship Model: BMW M5 Competition</p>
-            <a href="discover/discover-bmw.html" class="btn btn-outline-dark w-100 mt-3">Discover BMW</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mb-4">
-      <div class="col-12 col-md-10 col-lg-8 mx-auto">
-        <div class="card h-100 shadow-sm text-center bg-card">
-          <img src="foto/mercedes.svg" class="card-img-top p-4" alt="Mercedes logo">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title fw-bold">Mercedes-Benz</h5>
-            <p class="card-text text-dark-gray">
-              Founded in 1926 from the merger of Benz & Cie and Daimler-Motoren-Gesellschaft, Mercedes-Benz is a symbol of luxury and innovation.  
-              It is considered a pioneer in the automotive industry, introducing many safety and comfort systems for the first time.  
-              The range includes elegant sedans and powerful AMG models, always guaranteeing quality and refinement.  
-              Mercedes has made history with iconic models like the S-Class and G-Class, true automotive legends.  
-              The brand focuses on balancing performance, advanced technology, and uncompromising comfort.  
-              Mercedes-Benz remains a global reference for those seeking luxury, safety, and timeless design.
-            </p>
-            <p class="fw-semibold mt-auto">Flagship Model: Mercedes-AMG GT 63 S 4MATIC+</p>
-            <a href="discover/discover-mercedes.html" class="btn btn-outline-dark w-100 mt-3">Discover Mercedes</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </main>
+</main>
 
 <footer th:replace="~{fragments :: footer}"></footer>
 </body>

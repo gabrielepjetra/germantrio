@@ -18,15 +18,6 @@ public class CarModelController {
         this.carModelRepository = carModelRepository;
     }
 
-    @GetMapping("/carmodels")
-    public String carModelsList(Model model) {
-        Iterable<CarModel> allCars = carModelRepository.findAll();
-
-        model.addAttribute("cars", allCars);
-
-        return "carmodels";
-    }
-
     @GetMapping("/carmodels/{id}")
     public String carModelDetail(@PathVariable long id, Model model) {
         Optional<CarModel> car = carModelRepository.findById(id);

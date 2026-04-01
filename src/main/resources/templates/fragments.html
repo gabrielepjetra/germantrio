@@ -20,9 +20,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto py-3">
-                <li class="nav-item py-2"><a class="nav-link" th:href="@{/}">Home</a></li>
-                <li class="nav-item py-2"><a class="nav-link" th:href="@{/brands}">Brands</a></li>
-                <li class="nav-item py-2"><a class="nav-link" th:href="@{/carmodels}">Car Models</a></li>
+                <li class="nav-item py-2">
+                    <a class="nav-link" th:href="@{/}"
+                       th:classappend="${#httpServletRequest.requestURI == '/'} ? 'active'">Home</a>
+                </li>
+                <li class="nav-item py-2">
+                    <a class="nav-link" th:href="@{/brands}"
+                       th:classappend="${#httpServletRequest.requestURI.startsWith('/brands')} ? 'active'">Brands</a>
+                </li>
             </ul>
         </div>
     </div>

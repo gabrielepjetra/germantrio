@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head(${brand.name} + ' - The German Trio')}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="~{fragments :: navbar}"></nav>
+
+<main class="container py-5 flex-grow-1">
+
+    <div class="card mx-auto mb-5 p-4 text-center" style="max-width: 600px;">
+        <img th:src="${brand.imgUrl}" alt="logo" class="mx-auto mb-3" style="max-height:80px; object-fit:contain;">
+        <h2 class="fw-bold" th:text="${brand.name}"></h2>
+        <p class="text-muted" th:text="${brand.shortDescription}"></p>
+        <p th:text="${brand.longDescription}"></p>
+        <p><strong>Flagship:</strong> <span th:text="${brand.flagship}"></span></p>
+    </div>
+
+    <h4 class="text-center fw-bold mb-4">Models</h4>
+    <div id="brandCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div th:each="car, iterStat : ${cars}"
+                 th:classappend="${iterStat.first} ? 'active'"
+                 class="carousel-item text-center">
+                <a th:href="@{|/carmodels/${car.id}|}">
+                    <img th:src="${car.imageUrl}" th:alt="${car.name}"
+                         class="d-block mx-auto mb-3"
+                         style="max-height: 220px; object-fit: contain;">
+                    <h5 class="fw-bold" th:text="${car.name}"></h5>
+                    <p class="text-muted" th:text="${car.horsepower} + ' HP — € ' + ${car.basePriceEur}"></p>
+                </a>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#brandCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#brandCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

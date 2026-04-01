@@ -1,9 +1,9 @@
 package be.thomasmore.germantrio.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 public class CarModel {
@@ -12,10 +12,23 @@ public class CarModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @ManyToOne
+    @JoinColumn(name = "brand_id",  nullable = false)
+    private Brand brand;
+
     private String name;
-    private String brand;
+    private String imageURL;
+    private String transmission;
+    private String engineConfig;
+    private String engineType;
     private int horsepower;
-    private double startPrice;
+    private int torqueNm;
+    private String drivetrain;
+    private int weightKg;
+    private BigDecimal zeroToHundred;
+    private BigDecimal basePriceEur;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public CarModel() {
     }
@@ -28,6 +41,14 @@ public class CarModel {
         this.id = id;
     }
 
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
     public String getName() {
         return name;
     }
@@ -36,12 +57,36 @@ public class CarModel {
         this.name = name;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getTransmission() {
+        return transmission;
+    }
+
+    public void setTransmission(String transmission) {
+        this.transmission = transmission;
+    }
+
+    public String getEngineConfig() {
+        return engineConfig;
+    }
+
+    public void setEngineConfig(String engineConfig) {
+        this.engineConfig = engineConfig;
+    }
+
+    public String getEngineType() {
+        return engineType;
+    }
+
+    public void setEngineType(String engineType) {
+        this.engineType = engineType;
     }
 
     public int getHorsepower() {
@@ -52,11 +97,59 @@ public class CarModel {
         this.horsepower = horsepower;
     }
 
-    public double getStartPrice() {
-        return startPrice;
+    public int getTorqueNm() {
+        return torqueNm;
     }
 
-    public void setStartPrice(double startPrice) {
-        this.startPrice = startPrice;
+    public void setTorqueNm(int torqueNm) {
+        this.torqueNm = torqueNm;
+    }
+
+    public String getDrivetrain() {
+        return drivetrain;
+    }
+
+    public void setDrivetrain(String drivetrain) {
+        this.drivetrain = drivetrain;
+    }
+
+    public int getWeightKg() {
+        return weightKg;
+    }
+
+    public void setWeightKg(int weightKg) {
+        this.weightKg = weightKg;
+    }
+
+    public BigDecimal getZeroToHundred() {
+        return zeroToHundred;
+    }
+
+    public void setZeroToHundred(BigDecimal zeroToHundred) {
+        this.zeroToHundred = zeroToHundred;
+    }
+
+    public BigDecimal getBasePriceEur() {
+        return basePriceEur;
+    }
+
+    public void setBasePriceEur(BigDecimal basePriceEur) {
+        this.basePriceEur = basePriceEur;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

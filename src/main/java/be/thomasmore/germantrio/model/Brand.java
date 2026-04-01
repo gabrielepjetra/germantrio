@@ -1,9 +1,6 @@
 package be.thomasmore.germantrio.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Brand {
@@ -11,8 +8,10 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(length = 50)
     private String name;
     private String shortDescription;
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
     private String flagship;
     private String imgUrl;

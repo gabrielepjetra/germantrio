@@ -21,15 +21,6 @@ public class BrandController {
         this.carModelRepository = carModelRepository;
     }
 
-    @GetMapping("/brands")
-    public String brands(Model model) {
-        Iterable<Brand> allBrands = brandRepository.findAll();
-
-        model.addAttribute("brands", allBrands);
-
-        return "brands";
-    }
-
     @GetMapping("/brands/{id}")
     public String brandDetail(@PathVariable long id, Model model) {
         Optional<Brand> brand = brandRepository.findById(id);

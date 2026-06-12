@@ -24,9 +24,15 @@
                     <a class="nav-link" th:href="@{/}"
                        th:classappend="${currentUrl == '/'} ? 'active'">Home</a>
                 </li>
+
                 <li class="nav-item py-2">
-                    <a class="nav-link" th:href="@{/brands}"
-                       th:classappend="${currentUrl.startsWith('/brands')} ? 'active'">Brands</a>
+                    <a class="nav-link" th:href="@{/compare}"
+                       th:classappend="${currentUrl == '/compare'} ? 'active'">Compare</a>
+                </li>
+
+                <li class="nav-item py-2">
+                    <a class="nav-link" th:href="@{/contact}"
+                       th:classappend="${currentUrl == '/contact'} ? 'active'">Contact</a>
                 </li>
             </ul>
         </div>

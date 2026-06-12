@@ -11,7 +11,7 @@ VALUES ('Mercedes-Benz', 'The best or nothing', 'Mercedes-Benz is a German globa
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi A1
-('Audi A1 30 TFSI','/foto/audi/a1.jpeg','Manual','I3 Turbo','Petrol',110,200,'FWD',1140,10.50,24500,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi A1 30 TFSI','/foto/audi/a3.jpeg','Manual','I3 Turbo','Petrol',110,200,'FWD',1140,10.50,24500,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi A3
@@ -19,35 +19,35 @@ VALUES
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi A5
-('Audi A5 40 TFSI quattro','/foto/audi/a5.jpeg','DCT','I4 Turbo','Petrol',204,320,'AWD',1580,7.10,52000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi A5 40 TFSI quattro','/foto/audi/a3.jpeg','DCT','I4 Turbo','Petrol',204,320,'AWD',1580,7.10,52000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi A6 variants
-('Audi A6 45 TFSI quattro','/foto/audi/a6.jpeg','Dual Clutch','I4 Turbo','Petrol',265,370,'AWD',1750,6.20,62000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi A6 45 TFSI quattro','/foto/audi/a3.jpeg','Dual Clutch','I4 Turbo','Petrol',265,370,'AWD',1750,6.20,62000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi A6 e-tron variants
-('Audi A6 e-tron','/foto/audi/a6etron.jpeg','Automatic','Electric Motor','Electric',286,450,'RWD',2100,6.00,70000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi A6 e-tron','/foto/audi/rsetron.jpeg','Automatic','Electric Motor','Electric',286,450,'RWD',2100,6.00,70000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi A8
-('Audi A8 L 60 TFSI e quattro','/foto/audi/a8.jpeg','Automatic','V6 Hybrid','Hybrid',462,700,'AWD',2300,4.90,120000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi A8 L 60 TFSI e quattro','/foto/audi/a3.jpeg','Automatic','V6 Hybrid','Hybrid',462,700,'AWD',2300,4.90,120000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi e-tron GT variants
-('Audi e-tron GT','/foto/audi/etron.jpeg','Automatic','Dual Electric Motor','Electric',476,630,'AWD',2350,4.10,110000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi e-tron GT','/foto/audi/rsetron.jpeg','Automatic','Dual Electric Motor','Electric',476,630,'AWD',2350,4.10,110000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi Q2
-('Audi Q2 35 TFSI quattro','/foto/audi/q2.jpeg','Dual Clutch','I4 Turbo','Petrol',150,250,'AWD',1420,8.20,40000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi Q2 35 TFSI quattro','/foto/audi/q5.jpeg','Dual Clutch','I4 Turbo','Petrol',150,250,'AWD',1420,8.20,40000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi Q3
-('Audi Q3 40 TFSI quattro','/foto/audi/q3.jpeg','Dual Clutch','I4 Turbo','Petrol',190,320,'AWD',1650,7.40,50000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi Q3 40 TFSI quattro','/foto/audi/q5.jpeg','Dual Clutch','I4 Turbo','Petrol',190,320,'AWD',1650,7.40,50000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi Q4 e-tron
-('Audi Q4 e-tron 50 quattro','/foto/audi/q4.jpeg','Automatic','Dual Electric Motor','Electric',299,460,'AWD',2250,6.20,72000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi Q4 e-tron 50 quattro','/foto/audi/q5.jpeg','Automatic','Dual Electric Motor','Electric',299,460,'AWD',2250,6.20,72000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi Q5
@@ -55,15 +55,15 @@ VALUES
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi Q6 e-tron variants
-('Audi Q6 e-tron','/foto/audi/q6.jpeg','Automatic','Single Electric Motor','Electric',286,450,'RWD',2300,6.60,75000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi Q6 e-tron','/foto/audi/q5.jpeg','Automatic','Single Electric Motor','Electric',286,450,'RWD',2300,6.60,75000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi Q7
-('Audi Q7 50 TDI quattro','/foto/audi/q7.jpeg','Dual Clutch','V6 Turbo','Diesel',286,600,'AWD',2250,6.20,85000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi Q7 50 TDI quattro','/foto/audi/q5.jpeg','Dual Clutch','V6 Turbo','Diesel',286,600,'AWD',2250,6.20,85000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi Q8
-('Audi Q8 55 TFSI quattro','/foto/audi/q8.jpeg','Dual Clutch','V6 Turbo','Petrol',340,500,'AWD',2250,5.90,102000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi Q8 55 TFSI quattro','/foto/audi/q5.jpeg','Dual Clutch','V6 Turbo','Petrol',340,500,'AWD',2250,5.90,102000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi RS e-tron GT variants
@@ -71,19 +71,19 @@ VALUES
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi RS3
-('Audi RS3 Sedan','/foto/audi/rs3.jpeg','Dual Clutch','I5 Turbo','Petrol',400,500,'AWD',1600,3.90,72000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi RS3 Sedan','/foto/audi/rsetron.jpeg','Dual Clutch','I5 Turbo','Petrol',400,500,'AWD',1600,3.90,72000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi RS5 variants
-('Audi RS5 Sportback','/foto/audi/rs5.jpeg','Dual Clutch','V6 Turbo','Petrol',450,600,'AWD',1840,3.90,95000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi RS5 Sportback','/foto/audi/rsetron.jpeg','Dual Clutch','V6 Turbo','Petrol',450,600,'AWD',1840,3.90,95000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi RS6 variants
-('Audi RS6 Avant','/foto/audi/rs6.jpeg','Dual Clutch','V8 Bi-Turbo','Petrol',600,800,'AWD',2075,3.60,135000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi RS6 Avant','/foto/audi/rsetron.jpeg','Dual Clutch','V8 Bi-Turbo','Petrol',600,800,'AWD',2075,3.60,135000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- Audi RS Q8 variants
-('Audi RS Q8','/foto/audi/rsq8.jpeg','Dual Clutch','V8 Bi-Turbo','Petrol',600,800,'AWD',2390,3.80,140000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('Audi RS Q8','/foto/audi/rsetron.jpeg','Dual Clutch','V8 Bi-Turbo','Petrol',600,800,'AWD',2390,3.80,140000,1,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- BMW 1 Series (F70) variants

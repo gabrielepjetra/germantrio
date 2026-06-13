@@ -1,12 +1,12 @@
 -- Inserimento dei 3 Brand
 INSERT INTO brand (name, short_description, long_description, flagship, img_url)
-VALUES ('Audi', 'Vorsprung durch Technik', 'Audi is a German automotive manufacturer of luxury vehicles...', 'Audi RS 6 Avant Performance', '/audi/audi-logo.png');
+VALUES ('Audi', 'Vorsprung durch Technik', 'Audi is a German automotive manufacturer of luxury vehicles...', 'Audi RS 6 Avant Performance', '/foto/audi/audi-logo.png');
 
 INSERT INTO brand (name, short_description, long_description, flagship, img_url)
-VALUES ('BMW', 'The Ultimate Driving Machine', 'Bayerische Motoren Werke AG, commonly referred to as BMW...', 'BMW M5 Competition', '/bmw/bmw-logo.png');
+VALUES ('BMW', 'The Ultimate Driving Machine', 'Bayerische Motoren Werke AG, commonly referred to as BMW...', 'BMW M5 Competition', '/foto/bmw/bmw-logo.png');
 
 INSERT INTO brand (name, short_description, long_description, flagship, img_url)
-VALUES ('Mercedes-Benz', 'The best or nothing', 'Mercedes-Benz is a German global automobile marque...', 'Mercedes-AMG GT 63 S 4matic+', '/mercedes/mercedes-logo.png');
+VALUES ('Mercedes-Benz', 'The best or nothing', 'Mercedes-Benz is a German global automobile marque...', 'Mercedes-AMG GT 63 S 4matic+', '/foto/mercedes/mercedes-logo.png');
 
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
@@ -87,13 +87,13 @@ VALUES
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- BMW 1 Series (F70) variants
-('BMW 120d','/foto/bmw/1-serie.png','Automatic','I4 Turbo','Diesel',163,400,'FWD',1500,7.40,36000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('BMW 120d','/foto/bmw/1-series.png','Automatic','I4 Turbo','Diesel',163,400,'FWD',1500,7.40,36000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- BMW 2 Series (G42) variants
-('BMW 220i Coupe','/foto/bmw/1-serie.png','Automatic','I4 Turbo','Petrol',184,300,'RWD',1480,7.50,40000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00'),
+('BMW 220i Coupe','/foto/bmw/1-series.png','Automatic','I4 Turbo','Petrol',184,300,'RWD',1480,7.50,40000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00'),
 -- BMW 2 Series (F74) variants
-('BMW 220d Gran Coupe','/foto/bmw/1-serie.png','Automatic','I4 Turbo','Diesel',150,350,'FWD',1450,8.00,39000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('BMW 220d Gran Coupe','/foto/bmw/1-series.png','Automatic','I4 Turbo','Diesel',150,350,'FWD',1450,8.00,39000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- BMW 3 Series (G20) Sedan variants

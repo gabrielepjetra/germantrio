@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Error - The German Trio')}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="~{fragments :: navbar}"></nav>
+
+<main class="container py-5 flex-grow-1">
+    <section class="error-panel mx-auto text-center">
+        <p class="error-label mb-2">Something went wrong</p>
+        <h1 class="fw-bold mb-3">Page unavailable</h1>
+        <p class="error-message mb-4"
+           th:text="${param.message != null ? param.message[0] : (message != null ? message : 'The page you requested could not be found.')}">
+            The page you requested could not be found.
+        </p>
+        <a th:href="@{/}" class="btn btn-outline-dark px-4 py-2">Return to homepage</a>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

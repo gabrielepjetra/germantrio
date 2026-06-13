@@ -5,9 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class AppUser {
@@ -31,6 +36,13 @@ public class AppUser {
     private String profilePhotoUrl;
     private LocalDateTime createdAt;
     private boolean admin = false;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_favorite_cars",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "car_model_id"))
+    private List<CarModel> favoriteCars = new ArrayList<>();
 
     public AppUser() {
     }
@@ -113,5 +125,13 @@ public class AppUser {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public List<CarModel> getFavoriteCars() {
+        return favoriteCars;
+    }
+
+    public void setFavoriteCars(List<CarModel> favoriteCars) {
+        this.favoriteCars = favoriteCars;
     }
 }

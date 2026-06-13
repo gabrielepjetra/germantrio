@@ -81,7 +81,8 @@
     </form>
 
     <div class="compare-grid">
-        <section class="compare-card">
+        <section class="compare-card"
+                 th:classappend="${comparisonResult != null ? (comparisonResult.overallWinner == 'LEFT' ? ' compare-card-winner' : (comparisonResult.overallWinner == 'RIGHT' ? ' compare-card-loser' : ' compare-card-draw')) : ''}">
             <div th:if="${leftCar != null}">
                 <div class="compare-image-wrap">
                     <img th:src="${leftCar.imageUrl}"
@@ -137,7 +138,8 @@
             </div>
         </section>
 
-        <section class="compare-card">
+        <section class="compare-card"
+                 th:classappend="${comparisonResult != null ? (comparisonResult.overallWinner == 'RIGHT' ? ' compare-card-winner' : (comparisonResult.overallWinner == 'LEFT' ? ' compare-card-loser' : ' compare-card-draw')) : ''}">
             <div th:if="${rightCar != null}">
                 <div class="compare-image-wrap">
                     <img th:src="${rightCar.imageUrl}"
@@ -193,6 +195,33 @@
             </div>
         </section>
     </div>
+
+    <section th:if="${comparisonResult != null}" class="comparison-results">
+        <div class="comparison-results-header">
+            <p class="brand-detail-label mb-2">Result</p>
+            <h2 th:if="${comparisonResult.overallWinner == 'LEFT'}">Left car wins overall</h2>
+            <h2 th:if="${comparisonResult.overallWinner == 'RIGHT'}">Right car wins overall</h2>
+            <h2 th:if="${comparisonResult.overallWinner == 'DRAW'}">Overall draw</h2>
+        </div>
+
+        <div class="comparison-row comparison-row-head">
+            <span>Field</span>
+            <span>Left car</span>
+            <span>Right car</span>
+        </div>
+
+        <div class="comparison-row" th:each="row : ${comparisonResult.rows}">
+            <span class="comparison-label" th:text="${row.label}">Field</span>
+            <span th:text="${row.leftValue}"
+                  th:classappend="${row.leftResult == 'WIN' ? ' comparison-value-win' : (row.leftResult == 'LOSE' ? ' comparison-value-lose' : ' comparison-value-draw')}">
+                Left value
+            </span>
+            <span th:text="${row.rightValue}"
+                  th:classappend="${row.rightResult == 'WIN' ? ' comparison-value-win' : (row.rightResult == 'LOSE' ? ' comparison-value-lose' : ' comparison-value-draw')}">
+                Right value
+            </span>
+        </div>
+    </section>
 
 </main>
 <footer th:replace="~{fragments :: footer}"></footer>

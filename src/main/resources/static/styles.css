@@ -454,6 +454,18 @@ body::after {
     box-shadow: 0 20px 40px rgba(0,0,0,0.28);
 }
 
+.compare-card-winner {
+    border-color: #22c55e;
+}
+
+.compare-card-loser {
+    border-color: #ef4444;
+}
+
+.compare-card-draw {
+    border-color: rgba(255,255,255,0.28);
+}
+
 .compare-image-wrap {
     display: flex;
     align-items: center;
@@ -533,6 +545,67 @@ body::after {
 .compare-placeholder p:last-child {
     margin-bottom: 0;
     color: #cbd5e1;
+}
+
+.comparison-results {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.comparison-results-header {
+    margin-bottom: 1rem;
+}
+
+.comparison-results-header h2 {
+    margin-bottom: 0;
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.comparison-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 0.8fr) repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.comparison-row:last-child {
+    border-bottom: 0;
+}
+
+.comparison-row-head {
+    color: var(--dark-gray);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+}
+
+.comparison-label {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.comparison-value-win {
+    color: #22c55e;
+    font-weight: 800;
+}
+
+.comparison-value-lose {
+    color: #ef4444;
+    font-weight: 800;
+}
+
+.comparison-value-draw {
+    color: #cbd5e1;
+    font-weight: 800;
 }
 
 .car-detail-page {
@@ -775,6 +848,19 @@ body::after {
 }
 
 @media (max-width: 576px) {
+    .comparison-results {
+        padding: 1rem;
+    }
+
+    .comparison-row {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+    }
+
+    .comparison-row-head {
+        display: none;
+    }
+
     .compare-title h1 {
         font-size: 1.9rem;
     }

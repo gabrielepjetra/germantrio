@@ -27,7 +27,8 @@ public class BrandController {
         if (brand.isPresent()) {
             model.addAttribute("brand", brand.get());
             model.addAttribute("cars", carModelRepository.findByBrandId(id));
+            return "branddetail";
         }
-        return "branddetail";
+        return "redirect:/error?message=Brand%20not%20found";
     }
 }

@@ -91,9 +91,9 @@ VALUES
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- BMW 2 Series (G42) variants
-('BMW 220i Coupe','/foto/bmw/1-series.png','Automatic','I4 Turbo','Petrol',184,300,'RWD',1480,7.50,40000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00'),
+('BMW 220i Coupé','/foto/bmw/1-series.png','Automatic','I4 Turbo','Petrol',184,300,'RWD',1480,7.50,40000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00'),
 -- BMW 2 Series (F74) variants
-('BMW 220d Gran Coupe','/foto/bmw/1-series.png','Automatic','I4 Turbo','Diesel',150,350,'FWD',1450,8.00,39000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('BMW 220d Gran Coupé','/foto/bmw/1-series.png','Automatic','I4 Turbo','Diesel',150,350,'FWD',1450,8.00,39000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- BMW 3 Series (G20) Sedan variants
@@ -173,11 +173,11 @@ VALUES
 -- BMW M3
 ('BMW M3 Competition Sedan','/foto/bmw/m4.png','Automatic','I6 Twin Turbo','Petrol',510,650,'RWD',1800,3.90,95000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00'),
 -- BMW M4
-('BMW M4 Competition Coupe','/foto/bmw/m4.png','Automatic','I6 Twin Turbo','Petrol',510,650,'RWD',1780,3.90,98000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00'),
+('BMW M4 Competition Coupé','/foto/bmw/m4.png','Automatic','I6 Twin Turbo','Petrol',510,650,'RWD',1780,3.90,98000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00'),
 -- BMW M5
 ('BMW M5','/foto/bmw/m4.png','Automatic','V8 Twin Turbo','Petrol',600,750,'AWD',2000,3.40,140000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00'),
 -- BMW M8
-('BMW M8 Competition Gran Coupe','/foto/bmw/m4.png','Automatic','V8 Twin Turbo','Petrol',625,750,'AWD',2050,3.30,168000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+('BMW M8 Competition Gran Coupé','/foto/bmw/m4.png','Automatic','V8 Twin Turbo','Petrol',625,750,'AWD',2050,3.30,168000,2,'2025-01-01 00:00:00','2025-01-01 00:00:00');
 INSERT INTO car_model (name, image_url, transmission, engine_config, engine_type, horsepower, torque_nm, drivetrain, weight_kg, zero_to_hundred, base_price_eur, brand_id, created_at, updated_at)
 VALUES
 -- BMW X5 M / X6 M

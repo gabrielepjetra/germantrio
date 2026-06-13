@@ -24,7 +24,8 @@ public class CarModelController {
         if (car.isPresent()) {
             model.addAttribute("car", car.get());
             model.addAttribute("brandId", car.get().getBrand().getId());
+            return "carmodeldetail";
         }
-        return "carmodeldetail";
+        return "redirect:/error?message=Car%20model%20not%20found";
     }
 }

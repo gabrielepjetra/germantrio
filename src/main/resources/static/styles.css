@@ -358,6 +358,121 @@ body::after {
     font-size: 1.1rem;
 }
 
+.compare-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.compare-title {
+    text-align: right;
+}
+
+.compare-title h1 {
+    margin-bottom: 0;
+    color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: 800;
+}
+
+.compare-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.compare-card {
+    min-height: 420px;
+    overflow: hidden;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.compare-image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 240px;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+}
+
+.compare-car-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.compare-card-body {
+    padding: 1.5rem;
+}
+
+.compare-brand {
+    margin-bottom: 0.35rem;
+    color: var(--dark-gray);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+}
+
+.compare-card-body h2,
+.compare-placeholder h2 {
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-size: 1.45rem;
+    font-weight: 800;
+}
+
+.compare-specs {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+}
+
+.compare-specs div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.compare-specs dt {
+    color: var(--dark-gray);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+}
+
+.compare-specs dd {
+    margin: 0;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: right;
+}
+
+.compare-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 420px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.compare-placeholder p:last-child {
+    margin-bottom: 0;
+    color: #cbd5e1;
+}
+
 .car-detail-page {
     display: flex;
     flex-direction: column;
@@ -519,6 +634,19 @@ body::after {
 }
 
 @media (max-width: 991px) {
+    .compare-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .compare-title {
+        text-align: left;
+    }
+
+    .compare-grid {
+        grid-template-columns: 1fr;
+    }
+
     .brand-detail-hero {
         grid-template-columns: 1fr;
     }
@@ -563,6 +691,34 @@ body::after {
 }
 
 @media (max-width: 576px) {
+    .compare-title h1 {
+        font-size: 1.9rem;
+    }
+
+    .compare-card,
+    .compare-placeholder {
+        min-height: 320px;
+    }
+
+    .compare-image-wrap {
+        height: 200px;
+    }
+
+    .compare-card-body,
+    .compare-placeholder {
+        padding: 1rem;
+    }
+
+    .compare-specs div {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .compare-specs dd {
+        text-align: left;
+    }
+
     .brand-detail-hero {
         gap: 1rem;
         margin-bottom: 2rem;

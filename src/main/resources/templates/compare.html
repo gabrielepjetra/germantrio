@@ -7,16 +7,60 @@
 
 <nav th:replace="~{fragments :: navbar}"></nav>
 
-<main class="container-fluid position-relative min-vh-100 d-flex justify-content-center align-items-center text-center">
+<main class="container py-5 flex-grow-1">
 
-    <a th:href="@{/}" class="btn btn-outline-light position-absolute top-0 start-0 m-4">&larr; Return to homepage</a>
+    <div class="compare-header">
+        <a th:href="@{/}" class="btn btn-outline-dark">&larr; Return to homepage</a>
+        <div class="compare-title">
+            <p class="brand-detail-label mb-2">Comparison Tool</p>
+            <h1>Compare Cars</h1>
+        </div>
+    </div>
 
-    <div>
-        <h1 class="fw-bold text-custom mb-3">Work in Progress</h1>
-        <p class="lead text-custom">
-            The comparison tool is currently under development.<br>
-            This page will be ready soon.
-        </p>
+    <div class="compare-grid">
+        <section class="compare-card">
+            <div th:if="${leftCar != null}">
+                <div class="compare-image-wrap">
+                    <img th:src="${leftCar.imageUrl}"
+                         th:alt="${leftCar.name}"
+                         class="compare-car-img">
+                </div>
+
+                <div class="compare-card-body">
+                    <p class="compare-brand" th:text="${leftCar.brand.name}">Brand</p>
+                    <h2 th:text="${leftCar.name}">Model name</h2>
+
+                    <dl class="compare-specs">
+                        <div>
+                            <dt>Horsepower</dt>
+                            <dd><span th:text="${leftCar.horsepower}">0</span> HP</dd>
+                        </div>
+                        <div>
+                            <dt>Transmission</dt>
+                            <dd th:text="${leftCar.transmission}">Transmission</dd>
+                        </div>
+                        <div>
+                            <dt>Base Price</dt>
+                            <dd>EUR <span th:text="${leftCar.basePriceEur}">0</span></dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+
+            <div th:unless="${leftCar != null}" class="compare-placeholder">
+                <p class="brand-detail-label mb-2">Left Model</p>
+                <h2>No model selected</h2>
+                <p>Open a car detail page and choose compare to place it here.</p>
+            </div>
+        </section>
+
+        <section class="compare-card">
+            <div class="compare-placeholder">
+                <p class="brand-detail-label mb-2">Right Model</p>
+                <h2>Select a second model</h2>
+                <p>The second car selector will be added later.</p>
+            </div>
+        </section>
     </div>
 
 </main>

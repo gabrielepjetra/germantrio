@@ -6,6 +6,14 @@
     --dark-gray: #9CA3AF;
 }
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     min-height: 100vh;
     background:radial-gradient(circle at top, rgba(28,105,212,0.25), transparent 60%),
@@ -114,4 +122,78 @@ body::after {
     opacity: 0.08;
     pointer-events: none;
     z-index: -1;
+}
+
+.model-card {
+    border: none;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.model-card {
+    color: #212529;
+}
+
+.model-card .card-title {
+    color: #111827;
+}
+
+.model-card .card-text,
+.model-card span {
+    color: #4B5563;
+}
+
+.model-card:hover {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.16) !important;
+}
+
+.model-card-img {
+    height: 260px;
+    width: 100%;
+    object-fit: contain;
+    background-color: #f8f9fa;
+    padding: 1rem;
+}
+
+.brand-detail-logo {
+    max-height: 90px;
+    max-width: 220px;
+    width: auto;
+    object-fit: contain;
+}
+
+.text-muted-custom {
+    color: #cbd5e1;
+}
+
+.model-card .btn-view-details {
+    background-color: #111827;
+    border: 1px solid #111827;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 0.75rem;
+}
+
+.model-card .btn-view-details:hover {
+    background-color: var(--audi-red);
+    border-color: var(--audi-red);
+    color: #ffffff;
+}
+
+.car-detail-img {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: 280px;
+    object-fit: contain;
+    padding: 1rem;
+}
+
+@media (max-width: 576px) {
+    .car-detail-img {
+        height: 200px;
+        max-width: 100%;
+        padding: 0.5rem;
+    }
 }

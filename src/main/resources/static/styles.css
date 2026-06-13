@@ -157,14 +157,38 @@ body::after {
 }
 
 .brand-detail-logo {
-    max-height: 90px;
-    max-width: 220px;
+    max-height: 150px;
+    max-width: 310px;
     width: auto;
     object-fit: contain;
 }
 
 .text-muted-custom {
     color: #cbd5e1;
+}
+
+.brand-detail-hero {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.35fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+    margin-bottom: 3rem;
+}
+
+.brand-detail-logo-panel,
+.brand-detail-content {
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.brand-detail-logo-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    padding: 2rem;
 }
 
 .model-card .btn-view-details {
@@ -181,19 +205,431 @@ body::after {
     color: #ffffff;
 }
 
+.brand-detail-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.brand-detail-label {
+    color: var(--dark-gray);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+}
+
+.brand-detail-name {
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.brand-detail-short {
+    margin-bottom: 1rem;
+    color: #cbd5e1;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.brand-detail-long {
+    margin-bottom: 1.5rem;
+    color: #e5e7eb;
+    line-height: 1.7;
+}
+
+.brand-flagship {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 4px solid var(--audi-red);
+    border-radius: 12px;
+}
+
+.brand-flagship span {
+    color: var(--dark-gray);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+}
+
+.brand-flagship strong {
+    color: #ffffff;
+    font-size: 1.05rem;
+}
+
+.brand-models-section {
+    margin-bottom: 3rem;
+}
+
+.brand-models-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.brand-models-header h2 {
+    margin-bottom: 0;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.brand-model-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.brand-model-card {
+    min-width: 0;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-model-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 44px rgba(0,0,0,0.28);
+}
+
+.brand-model-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.brand-model-image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 230px;
+    padding: 1rem;
+    background: #f8f9fa;
+}
+
+.brand-model-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand-model-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1.25rem;
+}
+
+.brand-model-body h3 {
+    margin-bottom: 1rem;
+    color: #111827;
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.brand-model-specs {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0 0 1.25rem;
+}
+
+.brand-model-specs div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.brand-model-specs dt {
+    color: #6b7280;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+}
+
+.brand-model-specs dd {
+    margin: 0;
+    color: #111827;
+    font-weight: 700;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.brand-model-body .btn-view-details {
+    margin-top: auto;
+    background-color: #111827;
+    border: 1px solid #111827;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 0.75rem;
+}
+
+.brand-model-body .btn-view-details:hover {
+    background-color: var(--audi-red);
+    border-color: var(--audi-red);
+    color: #ffffff;
+}
+
+.car-detail-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.car-detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.car-detail-back {
+    flex: 0 0 auto;
+}
+
+.car-detail-title {
+    text-align: right;
+}
+
+.car-detail-brand {
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+}
+
+.car-detail-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.car-detail-image-panel,
+.car-detail-spec-panel,
+.car-performance-panel {
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.car-detail-image-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    padding: 2rem;
+}
+
 .car-detail-img {
     display: block;
     width: 100%;
-    max-width: 720px;
-    height: 280px;
+    max-width: 760px;
+    height: 360px;
     object-fit: contain;
+}
+
+.car-detail-spec-panel {
+    padding: 1.5rem;
+}
+
+.car-detail-section-title {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    color: #ffffff;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.car-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.car-spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+}
+
+.car-spec-item span {
+    color: var(--dark-gray);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+}
+
+.car-spec-item strong {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+.car-spec-item-wide {
+    grid-column: 1 / -1;
+}
+
+.car-performance-panel {
+    margin-top: 1rem;
     padding: 1rem;
 }
 
+.car-performance-panel h3 {
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.car-performance-panel p {
+    color: #d1d5db;
+}
+
+.car-detail-footer {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 991px) {
+    .brand-detail-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-detail-logo-panel {
+        min-height: 220px;
+    }
+
+    .brand-detail-name {
+        font-size: 2.25rem;
+    }
+
+    .brand-model-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .car-detail-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .car-detail-title {
+        text-align: left;
+    }
+
+    .car-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .car-detail-image-panel {
+        min-height: 320px;
+    }
+
+    .car-detail-img {
+        height: 280px;
+    }
+}
+
 @media (max-width: 576px) {
+    .brand-detail-hero {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .brand-detail-logo-panel,
+    .brand-detail-content {
+        padding: 1rem;
+    }
+
+    .brand-detail-logo-panel {
+        min-height: 180px;
+    }
+
+    .brand-detail-logo {
+        max-height: 140px;
+    }
+
+    .brand-detail-name {
+        font-size: 1.9rem;
+    }
+
+    .brand-detail-short {
+        font-size: 1.05rem;
+    }
+
+    .brand-models-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .brand-model-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .brand-model-image-wrap {
+        height: 200px;
+    }
+
+    .brand-model-specs div {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .brand-model-specs dd {
+        text-align: left;
+    }
+
+    .car-detail-header,
+    .car-detail-layout {
+        gap: 1rem;
+    }
+
+    .car-detail-title h1 {
+        font-size: 1.75rem;
+    }
+
+    .car-detail-image-panel,
+    .car-detail-spec-panel {
+        padding: 1rem;
+    }
+
+    .car-detail-image-panel {
+        min-height: 240px;
+    }
+
     .car-detail-img {
         height: 200px;
-        max-width: 100%;
-        padding: 0.5rem;
+    }
+
+    .car-spec-grid {
+        grid-template-columns: 1fr;
     }
 }

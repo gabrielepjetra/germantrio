@@ -8,93 +8,94 @@
 <nav th:replace="~{fragments :: navbar}"></nav>
 
 <main class="container py-5 flex-grow-1">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card shadow border-0">
+  <section class="car-detail-page">
+    <div class="car-detail-header">
+      <a th:href="@{|/brands/${brandId}|}" class="btn btn-outline-dark car-detail-back">&larr; Back to Brand</a>
 
-        <div class="card-header bg-custom text-white text-center py-4">
-          <h2 class="mb-0 fw-bold" th:text="${car.brand.name} + ' ' + ${car.name}">Brand Model</h2>
-        </div>
-
-        <div class="card-body p-4 p-md-5">
-
-          <img th:src="${car.imageUrl}"
-               th:alt="${car.name}"
-               class="car-detail-img mx-auto mb-4">
-
-          <h4 class="mb-4 border-bottom pb-2">Technical Specifications</h4>
-
-          <ul class="list-group list-group-flush mb-4 border rounded">
-            <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-              <span class="text-muted">Brand</span>
-              <strong th:text="${car.brand.name}"></strong>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-              <span class="text-muted">Model</span>
-              <strong th:text="${car.name}"></strong>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-              <span class="text-muted">Engine</span>
-              <strong th:text="${car.engineConfig}"></strong>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-              <span class="text-muted">Engine Type</span>
-              <strong th:text="${car.engineType}"></strong>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-              <span class="text-muted">Transmission</span>
-              <strong th:text="${car.transmission}"></strong>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-              <span class="text-muted">Horsepower</span>
-              <strong th:text="${car.horsepower} + ' HP'"></strong>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-              <span class="text-muted">Torque</span>
-              <strong th:text="${car.torqueNm} + ' Nm'"></strong>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-              <span class="text-muted">Drivetrain</span>
-              <strong th:text="${car.drivetrain}"></strong>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-              <span class="text-muted">Weight</span>
-              <strong th:text="${car.weightKg} + ' kg'"></strong>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-              <span class="text-muted">0–100 km/h</span>
-              <strong th:text="${car.zeroToHundred} + ' s'"></strong>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center px-2">
-              <span class="text-muted">Base Price</span>
-              <strong th:text="'€ ' + ${car.basePriceEur}"></strong>
-            </li>
-          </ul>
-
-          <div class="text-center mt-4 p-4 border rounded">
-            <h5 class="mb-3 text-light">Performance Category</h5>
-            <div th:if="${car.engineType == 'Electric'}" class="alert alert-success mb-0">
-              ⚡ <strong>Full Electric.</strong> Zero emissions, instant torque delivery.
-            </div>
-            <div th:unless="${car.engineType == 'Electric'}">
-              <div th:if="${car.horsepower > 400}" class="alert alert-danger mb-0">
-                🚀 <strong>High Performance.</strong> Extreme power and uncompromising driving dynamics.
-              </div>
-              <div th:unless="${car.horsepower > 400}" class="alert alert-info mb-0">
-                🛣️ <strong>Premium Standard.</strong> The perfect balance between luxury, comfort, and responsiveness.
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="card-footer text-center py-4 border-top-0">
-          <a th:href="@{|/brands/${brandId}|}" class="btn btn-outline-dark px-4 py-2">&larr; Back to Brand</a>
-        </div>
-
+      <div class="car-detail-title">
+        <p class="car-detail-brand mb-2" th:text="${car.brand.name}">Brand</p>
+        <h1 class="fw-bold mb-0" th:text="${car.name}">Model</h1>
       </div>
     </div>
-  </div>
+
+    <div class="car-detail-layout">
+      <section class="car-detail-image-panel">
+        <img th:src="${car.imageUrl}"
+             th:alt="${car.name}"
+             class="car-detail-img">
+      </section>
+
+      <section class="car-detail-spec-panel">
+        <h2 class="car-detail-section-title">Technical Specifications</h2>
+
+        <div class="car-spec-grid">
+          <div class="car-spec-item">
+            <span>Brand</span>
+            <strong th:text="${car.brand.name}">Brand</strong>
+          </div>
+          <div class="car-spec-item">
+            <span>Model</span>
+            <strong th:text="${car.name}">Model</strong>
+          </div>
+          <div class="car-spec-item">
+            <span>Engine</span>
+            <strong th:text="${car.engineConfig}">Engine</strong>
+          </div>
+          <div class="car-spec-item">
+            <span>Engine Type</span>
+            <strong th:text="${car.engineType}">Type</strong>
+          </div>
+          <div class="car-spec-item">
+            <span>Transmission</span>
+            <strong th:text="${car.transmission}">Transmission</strong>
+          </div>
+          <div class="car-spec-item">
+            <span>Horsepower</span>
+            <strong th:text="${car.horsepower} + ' HP'">0 HP</strong>
+          </div>
+          <div class="car-spec-item">
+            <span>Torque</span>
+            <strong th:text="${car.torqueNm} + ' Nm'">0 Nm</strong>
+          </div>
+          <div class="car-spec-item">
+            <span>Drivetrain</span>
+            <strong th:text="${car.drivetrain}">Drivetrain</strong>
+          </div>
+          <div class="car-spec-item">
+            <span>Weight</span>
+            <strong th:text="${car.weightKg} + ' kg'">0 kg</strong>
+          </div>
+          <div class="car-spec-item">
+            <span>0-100 km/h</span>
+            <strong th:text="${car.zeroToHundred} + ' s'">0 s</strong>
+          </div>
+          <div class="car-spec-item car-spec-item-wide">
+            <span>Base Price</span>
+            <strong th:text="'EUR ' + ${car.basePriceEur}">EUR 0</strong>
+          </div>
+        </div>
+
+        <div class="car-performance-panel">
+          <h3>Performance Category</h3>
+          <p th:if="${car.engineType == 'Electric'}" class="mb-0">
+            <strong>Full Electric.</strong> Zero emissions, instant torque delivery.
+          </p>
+          <div th:unless="${car.engineType == 'Electric'}">
+            <p th:if="${car.horsepower > 400}" class="mb-0">
+              <strong>High Performance.</strong> Extreme power and uncompromising driving dynamics.
+            </p>
+            <p th:unless="${car.horsepower > 400}" class="mb-0">
+              <strong>Premium Standard.</strong> The perfect balance between luxury, comfort, and responsiveness.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="car-detail-footer">
+      <a th:href="@{|/brands/${brandId}|}" class="btn btn-outline-dark px-4 py-2">&larr; Back to Brand</a>
+    </div>
+  </section>
 </main>
 
 <footer th:replace="~{fragments :: footer}"></footer>

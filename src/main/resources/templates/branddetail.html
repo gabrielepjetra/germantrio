@@ -8,50 +8,63 @@
 
 <main class="container py-5 flex-grow-1">
 
-    <div class="card mx-auto mb-5 p-4 text-center" style="max-width: 600px;">
-        <img th:src="@{${brand.imgUrl}}"
-             th:alt="${brand.name + ' logo'}"
-             class="brand-detail-logo mx-auto mb-3">
-        <h2 class="fw-bold" th:text="${brand.name}"></h2>
-        <p class="text-muted-custom" th:text="${brand.shortDescription}"></p>
-        <p th:text="${brand.longDescription}"></p>
-        <p><strong>Flagship:</strong> <span th:text="${brand.flagship}"></span></p>
-    </div>
+    <section class="brand-detail-hero">
+        <div class="brand-detail-logo-panel">
+            <img th:src="@{${brand.imgUrl}}"
+                 th:alt="${brand.name + ' logo'}"
+                 class="brand-detail-logo">
+        </div>
 
-    <section class="mb-5">
-        <h4 class="text-center fw-bold text-custom mb-4">Available Models</h4>
+        <div class="brand-detail-content">
+            <p class="brand-detail-label mb-2">Brand Overview</p>
+            <h1 class="brand-detail-name" th:text="${brand.name}">Brand name</h1>
+            <p class="brand-detail-short" th:text="${brand.shortDescription}">Short description</p>
+            <p class="brand-detail-long" th:text="${brand.longDescription}">Long description</p>
 
-        <div class="row g-4">
-            <div class="col-12 col-md-6 col-lg-4" th:each="car : ${cars}">
-                <a th:href="@{/carmodels/{id}(id=${car.id})}" class="text-decoration-none">
-                    <div class="card h-100 shadow-sm model-card">
+            <div class="brand-flagship">
+                <span>Flagship Model</span>
+                <strong th:text="${brand.flagship}">Flagship model</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="brand-models-section">
+        <div class="brand-models-header">
+            <p class="brand-detail-label mb-2">Model Lineup</p>
+            <h2>Available Models</h2>
+        </div>
+
+        <div class="brand-model-grid">
+            <article class="brand-model-card" th:each="car : ${cars}">
+                <a th:href="@{/carmodels/{id}(id=${car.id})}" class="brand-model-link">
+                    <div class="brand-model-image-wrap">
                         <img th:src="${car.imageUrl}"
                              th:alt="${car.name}"
-                             class="card-img-top model-card-img">
+                             class="brand-model-img">
+                    </div>
 
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold" th:text="${car.name}">
-                                Model name
-                            </h5>
+                    <div class="brand-model-body">
+                        <h3 th:text="${car.name}">Model name</h3>
 
-                            <p class="card-text mb-2">
-                                <span th:text="${car.horsepower}">0</span> HP
-                                —
-                                <span th:text="${car.transmission}">Transmission</span>
-                            </p>
-
-                            <p class="card-text mb-3">
-                                From €
-                                <span th:text="${car.basePriceEur}">0</span>
-                            </p>
-
-                            <div class="btn btn-view-details w-100">
-                                View Details
+                        <dl class="brand-model-specs">
+                            <div>
+                                <dt>Horsepower</dt>
+                                <dd><span th:text="${car.horsepower}">0</span> HP</dd>
                             </div>
-                        </div>
+                            <div>
+                                <dt>Transmission</dt>
+                                <dd th:text="${car.transmission}">Transmission</dd>
+                            </div>
+                            <div>
+                                <dt>Base Price</dt>
+                                <dd>EUR <span th:text="${car.basePriceEur}">0</span></dd>
+                            </div>
+                        </dl>
+
+                        <div class="btn btn-view-details w-100">View Details</div>
                     </div>
                 </a>
-            </div>
+            </article>
         </div>
     </section>
 

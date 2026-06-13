@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:fragment="head(title)">
     <meta charset="utf-8">
@@ -33,6 +35,28 @@
                 <li class="nav-item py-2">
                     <a class="nav-link" th:href="@{/contact}"
                        th:classappend="${currentUrl == '/contact'} ? 'active'">Contact</a>
+                </li>
+
+                <li class="nav-item py-2" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" th:href="@{/login}"
+                       th:classappend="${currentUrl == '/login'} ? 'active'">Login</a>
+                </li>
+
+                <li class="nav-item py-2" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" th:href="@{/register}"
+                       th:classappend="${currentUrl == '/register'} ? 'active'">Register</a>
+                </li>
+
+                <li class="nav-item py-2" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/profile}"
+                       th:classappend="${currentUrl == '/profile'} ? 'active'">Profile</a>
+                </li>
+
+                <li class="nav-item py-2" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post" class="nav-logout-form">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                        <button type="submit" class="nav-link nav-logout-button">Logout</button>
+                    </form>
                 </li>
             </ul>
         </div>

@@ -17,6 +17,69 @@
         </div>
     </div>
 
+    <form th:action="@{/compare}" method="get" class="compare-selector">
+        <div class="compare-select-group">
+            <label for="leftBrandId">Left brand</label>
+            <select id="leftBrandId" class="form-select compare-brand-select" data-side="left">
+                <option value="">Select a brand</option>
+                <option th:each="brandOption : ${brands}"
+                        th:value="${brandOption.id}"
+                        th:selected="${leftBrandId != null && brandOption.id == leftBrandId}"
+                        th:text="${brandOption.name}">
+                    Brand
+                </option>
+            </select>
+        </div>
+
+        <div class="compare-select-group">
+            <label for="leftCarId">Left model</label>
+            <select id="leftCarId" name="leftCarId" class="form-select compare-model-select" data-side="left">
+                <option value="">Select a first model</option>
+                <option th:each="carOption : ${cars}"
+                        th:value="${carOption.id}"
+                        th:data-brand-id="${carOption.brand.id}"
+                        th:selected="${leftCarId != null && carOption.id == leftCarId}"
+                        th:text="${carOption.name}">
+                    Model
+                </option>
+            </select>
+        </div>
+
+        <div class="compare-select-group compare-right-brand-group">
+            <label for="rightBrandId">Right brand</label>
+            <select id="rightBrandId" class="form-select compare-brand-select" data-side="right">
+                <option value="">Select a brand</option>
+                <option th:each="brandOption : ${brands}"
+                        th:value="${brandOption.id}"
+                        th:selected="${rightBrandId != null && brandOption.id == rightBrandId}"
+                        th:text="${brandOption.name}">
+                    Brand
+                </option>
+            </select>
+        </div>
+
+        <div class="compare-select-group">
+            <label for="rightCarId">Right model</label>
+            <select id="rightCarId" name="rightCarId" class="form-select compare-model-select" data-side="right">
+                <option value="">Select a second model</option>
+                <option th:each="carOption : ${cars}"
+                        th:value="${carOption.id}"
+                        th:data-brand-id="${carOption.brand.id}"
+                        th:selected="${rightCarId != null && carOption.id == rightCarId}"
+                        th:text="${carOption.name}">
+                    Model
+                </option>
+            </select>
+        </div>
+
+        <div class="compare-submit-group">
+            <button type="submit" class="btn btn-outline-dark compare-submit">
+            <img th:src="@{/foto/icons/compare-alt-icon-white.png}" alt="" class="compare-submit-icon">
+            <span>Compare</span>
+            </button>
+        </div>
+    </form>
+
     <div class="compare-grid">
         <section class="compare-card">
             <div th:if="${leftCar != null}">
@@ -31,13 +94,33 @@
                     <h2 th:text="${leftCar.name}">Model name</h2>
 
                     <dl class="compare-specs">
+                        <div class="compare-spec-desktop">
+                            <dt>Engine</dt>
+                            <dd th:text="${leftCar.engineConfig}">Engine</dd>
+                        </div>
                         <div>
                             <dt>Horsepower</dt>
                             <dd><span th:text="${leftCar.horsepower}">0</span> HP</dd>
                         </div>
                         <div>
+                            <dt>Torque</dt>
+                            <dd><span th:text="${leftCar.torqueNm}">0</span> Nm</dd>
+                        </div>
+                        <div class="compare-spec-desktop">
                             <dt>Transmission</dt>
                             <dd th:text="${leftCar.transmission}">Transmission</dd>
+                        </div>
+                        <div class="compare-spec-desktop">
+                            <dt>Drivetrain</dt>
+                            <dd th:text="${leftCar.drivetrain}">Drivetrain</dd>
+                        </div>
+                        <div class="compare-spec-desktop">
+                            <dt>Weight</dt>
+                            <dd><span th:text="${leftCar.weightKg}">0</span> kg</dd>
+                        </div>
+                        <div>
+                            <dt>0-100 km/h</dt>
+                            <dd><span th:text="${leftCar.zeroToHundred}">0</span> s</dd>
                         </div>
                         <div>
                             <dt>Base Price</dt>
@@ -50,20 +133,96 @@
             <div th:unless="${leftCar != null}" class="compare-placeholder">
                 <p class="brand-detail-label mb-2">Left Model</p>
                 <h2>No model selected</h2>
-                <p>Open a car detail page and choose compare to place it here.</p>
+                <p>Select a first model above or open a car detail page and choose compare.</p>
             </div>
         </section>
 
         <section class="compare-card">
-            <div class="compare-placeholder">
+            <div th:if="${rightCar != null}">
+                <div class="compare-image-wrap">
+                    <img th:src="${rightCar.imageUrl}"
+                         th:alt="${rightCar.name}"
+                         class="compare-car-img">
+                </div>
+
+                <div class="compare-card-body">
+                    <p class="compare-brand" th:text="${rightCar.brand.name}">Brand</p>
+                    <h2 th:text="${rightCar.name}">Model name</h2>
+
+                    <dl class="compare-specs">
+                        <div class="compare-spec-desktop">
+                            <dt>Engine</dt>
+                            <dd th:text="${rightCar.engineConfig}">Engine</dd>
+                        </div>
+                        <div>
+                            <dt>Horsepower</dt>
+                            <dd><span th:text="${rightCar.horsepower}">0</span> HP</dd>
+                        </div>
+                        <div>
+                            <dt>Torque</dt>
+                            <dd><span th:text="${rightCar.torqueNm}">0</span> Nm</dd>
+                        </div>
+                        <div class="compare-spec-desktop">
+                            <dt>Transmission</dt>
+                            <dd th:text="${rightCar.transmission}">Transmission</dd>
+                        </div>
+                        <div class="compare-spec-desktop">
+                            <dt>Drivetrain</dt>
+                            <dd th:text="${rightCar.drivetrain}">Drivetrain</dd>
+                        </div>
+                        <div class="compare-spec-desktop">
+                            <dt>Weight</dt>
+                            <dd><span th:text="${rightCar.weightKg}">0</span> kg</dd>
+                        </div>
+                        <div>
+                            <dt>0-100 km/h</dt>
+                            <dd><span th:text="${rightCar.zeroToHundred}">0</span> s</dd>
+                        </div>
+                        <div>
+                            <dt>Base Price</dt>
+                            <dd>EUR <span th:text="${rightCar.basePriceEur}">0</span></dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+
+            <div th:unless="${rightCar != null}" class="compare-placeholder">
                 <p class="brand-detail-label mb-2">Right Model</p>
                 <h2>Select a second model</h2>
-                <p>The second car selector will be added later.</p>
+                <p>Choose another car above to place it here.</p>
             </div>
         </section>
     </div>
 
 </main>
 <footer th:replace="~{fragments :: footer}"></footer>
+<script>
+    document.querySelectorAll(".compare-brand-select").forEach((brandSelect) => {
+        const side = brandSelect.dataset.side;
+        const modelSelect = document.querySelector(`.compare-model-select[data-side="${side}"]`);
+
+        function filterModels(resetSelection) {
+            const brandId = brandSelect.value;
+
+            Array.from(modelSelect.options).forEach((option) => {
+                if (!option.value) {
+                    return;
+                }
+
+                const matchesBrand = brandId && option.dataset.brandId === brandId;
+                option.hidden = !matchesBrand;
+                option.disabled = !matchesBrand;
+            });
+
+            const selectedOption = modelSelect.selectedOptions[0];
+            if (resetSelection || (selectedOption && selectedOption.disabled)) {
+                modelSelect.value = "";
+            }
+        }
+
+        filterModels(false);
+        brandSelect.addEventListener("change", () => filterModels(true));
+    });
+</script>
 </body>
 </html>

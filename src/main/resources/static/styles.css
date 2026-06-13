@@ -377,6 +377,68 @@ body::after {
     font-weight: 800;
 }
 
+.compare-selector {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+    gap: 1rem;
+    align-items: end;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.compare-select-group {
+    min-width: 0;
+}
+
+.compare-select-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--dark-gray);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+}
+
+.compare-select-group .form-select {
+    background-color: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.16);
+    color: #ffffff;
+}
+
+.compare-select-group .form-select:focus {
+    border-color: var(--audi-red);
+    box-shadow: 0 0 0 0.2rem rgba(187,10,48,0.25);
+}
+
+.compare-select-group .form-select option {
+    color: #111827;
+}
+
+.compare-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 38px;
+}
+
+.compare-right-brand-group,
+.compare-submit-group {
+    padding-left: 1rem;
+    border-left: 1px solid rgba(255,255,255,0.14);
+}
+
+.compare-submit-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    object-fit: contain;
+}
+
 .compare-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -647,6 +709,28 @@ body::after {
         grid-template-columns: 1fr;
     }
 
+    .compare-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .compare-submit {
+        width: 100%;
+    }
+
+    .compare-right-brand-group {
+        padding-left: 0;
+        padding-top: 1rem;
+        border-left: 0;
+        border-top: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .compare-submit-group {
+        padding-left: 0;
+        padding-top: 1rem;
+        border-left: 0;
+        border-top: 1px solid rgba(255,255,255,0.14);
+    }
+
     .brand-detail-hero {
         grid-template-columns: 1fr;
     }
@@ -717,6 +801,10 @@ body::after {
 
     .compare-specs dd {
         text-align: left;
+    }
+
+    .compare-spec-desktop {
+        display: none !important;
     }
 
     .brand-detail-hero {

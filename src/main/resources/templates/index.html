@@ -42,7 +42,6 @@
                   <h3 class="card-title text-custom fw-bold" th:text="${brand.name}">
                     Brand name
                   </h3>
-
                   <p class="card-text text-dark-gray mb-0">
                     View all available models from this brand.
                   </p>
@@ -58,36 +57,57 @@
 
         <div class="row g-4">
           <div class="col-12 col-md-4">
-            <div class="card h-100 shadow-sm bg-card">
-              <div class="card-body text-center p-4">
-                <h4 class="card-title text-custom fw-bold">Create an Account</h4>
-                <p class="card-text text-dark-gray">
-                  Register to save your favourite car models, manage your profile and receive notifications.
-                </p>
+            <a href="" class="text-decoration-none">
+              <div class="card h-100 shadow-sm bg-card">
+                <div class="card-body text-center p-4">
+                  <img th:src="@{/foto/icons/registration-icon-white.png}"
+                       class="brand-logo mb-4"
+                       alt="Account create"
+                       style="width: 100px;">
+
+                  <h4 class="card-title text-custom fw-bold">Create an Account</h4>
+                  <p class="card-text text-dark-gray">
+                    Register to save your favourite car models, manage your profile and receive notifications.
+                  </p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
 
           <div class="col-12 col-md-4">
-            <div class="card h-100 shadow-sm bg-card">
-              <div class="card-body text-center p-4">
-                <h4 class="card-title text-custom fw-bold">Browse Models</h4>
-                <p class="card-text text-dark-gray">
-                  Explore models from Audi, BMW and Mercedes-Benz and view their main specifications.
-                </p>
+            <a href="" class="text-decoration-none">
+              <div class="card h-100 shadow-sm bg-card">
+                <div class="card-body text-center p-4">
+                  <img th:src="@{/foto/icons/car-search-white.png}"
+                       class="brand-logo mb-4"
+                       alt="Search car"
+                       style="width: 100px;">
+
+                  <h4 class="card-title text-custom fw-bold">Browse Models</h4>
+                  <p class="card-text text-dark-gray">
+                    Explore models from Audi, BMW and Mercedes-Benz and view their main specifications.
+                  </p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
 
           <div class="col-12 col-md-4">
-            <div class="card h-100 shadow-sm bg-card">
-              <div class="card-body text-center p-4">
-                <h4 class="card-title text-custom fw-bold">Compare Cars</h4>
-                <p class="card-text text-dark-gray">
-                  Send models to the comparison tool and compare their details side by side.
-                </p>
+            <a href="" class="text-decoration-none">
+              <div class="card h-100 shadow-sm bg-card">
+                <div class="card-body text-center p-4">
+                  <img th:src="@{/foto/icons/compare-icon-white.png}"
+                       class="brand-logo mb-4"
+                       alt="Account create"
+                       style="width: 100px;">
+
+                  <h4 class="card-title text-custom fw-bold">Compare Cars</h4>
+                  <p class="card-text text-dark-gray">
+                    Send models to the comparison tool and compare their details side by side.
+                  </p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>

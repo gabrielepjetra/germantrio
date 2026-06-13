@@ -29,6 +29,11 @@ public class AuthController {
         return "register";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @PostMapping("/register")
     public String registerUser(@RequestParam String firstName,
                                @RequestParam String lastName,

@@ -48,6 +48,12 @@ public class CompareController {
             model.addAttribute("leftBrandId", leftCarValue.getBrand().getId());
         }
 
+        if (leftCarValue != null && rightCarId != null && leftCarId.equals(rightCarId)) {
+            model.addAttribute("rightBrandId", leftCarValue.getBrand().getId());
+            model.addAttribute("compareWarning", "You cannot compare a car model with itself.");
+            return "compare";
+        }
+
         if (rightCarId != null) {
             Optional<CarModel> rightCar = carModelRepository.findById(rightCarId);
             if (rightCar.isEmpty()) {

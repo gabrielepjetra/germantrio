@@ -80,6 +80,10 @@
         </div>
     </form>
 
+    <div th:if="${compareWarning != null}" class="compare-warning" th:text="${compareWarning}">
+        You cannot compare a car model with itself.
+    </div>
+
     <div class="compare-grid">
         <section class="compare-card"
                  th:classappend="${comparisonResult != null ? (comparisonResult.overallWinner == 'LEFT' ? ' compare-card-winner' : (comparisonResult.overallWinner == 'RIGHT' ? ' compare-card-loser' : ' compare-card-draw')) : ''}">

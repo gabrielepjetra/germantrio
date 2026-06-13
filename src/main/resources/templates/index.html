@@ -4,10 +4,75 @@
   <body class="d-flex flex-column min-vh-100">
     <nav th:replace="~{fragments :: navbar}"></nav>
 
-    <main class="container text-center py-5 py-lg-6">
-      <h1 class="display-4 fw-bold text-custom">The German Trio</h1>
-      <h3 class="fw-light text-custom mb-4">Audi, BMW or Mercedes-Benz?</h3>
-      <p class="lead mb-0">Compare Germany's three most iconic automotive brands.</p>
+    <main class="container py-5 py-lg-6">
+
+      <section class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-custom">The German Trio</h1>
+        <h3 class="fw-light text-custom mb-4">Audi, BMW or Mercedes-Benz?</h3>
+        <p class="lead mb-0">Compare Germany's three most iconic automotive brands.</p>
+      </section>
+
+      <section class="mb-5">
+        <h2 class="text-center text-custom fw-bold mb-4">Choose a Brand</h2>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-12 col-md-4" th:each="brand : ${brands}">
+            <a th:href="@{/brands/{id}(id=${brand.id})}" class="text-decoration-none">
+              <div class="card h-100 shadow-sm brand-card text-center">
+                <div class="card-body p-4">
+                  <h3 class="card-title text-custom fw-bold" th:text="${brand.name}">
+                    Brand name
+                  </h3>
+
+                  <p class="card-text text-dark-gray mb-0">
+                    View all available models from this brand.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-5">
+        <h2 class="text-center text-custom fw-bold mb-4">What can you do here?</h2>
+
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
+            <div class="card h-100 shadow-sm bg-card">
+              <div class="card-body text-center p-4">
+                <h4 class="card-title text-custom fw-bold">Create an Account</h4>
+                <p class="card-text text-dark-gray">
+                  Register to save your favourite car models, manage your profile and receive notifications.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="card h-100 shadow-sm bg-card">
+              <div class="card-body text-center p-4">
+                <h4 class="card-title text-custom fw-bold">Browse Models</h4>
+                <p class="card-text text-dark-gray">
+                  Explore models from Audi, BMW and Mercedes-Benz and view their main specifications.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="card h-100 shadow-sm bg-card">
+              <div class="card-body text-center p-4">
+                <h4 class="card-title text-custom fw-bold">Compare Cars</h4>
+                <p class="card-text text-dark-gray">
+                  Send models to the comparison tool and compare their details side by side.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer th:replace="~{fragments :: footer}"></footer>

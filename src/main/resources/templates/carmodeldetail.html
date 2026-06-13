@@ -12,6 +12,11 @@
     <div class="car-detail-header">
       <a th:href="@{|/brands/${brandId}|}" class="btn btn-outline-dark car-detail-back">&larr; Back to Brand</a>
 
+      <a th:href="@{/compare(leftCarId=${car.id})}" class="car-detail-compare-btn">
+        <img th:src="@{/foto/icons/compare-alt-icon-white.png}" alt="" class="car-detail-compare-icon">
+        <span>Compare this car</span>
+      </a>
+
       <div class="car-detail-title">
         <p class="car-detail-brand mb-2" th:text="${car.brand.name}">Brand</p>
         <h1 class="fw-bold mb-0" th:text="${car.name}">Model</h1>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Register - The German Trio')}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="~{fragments :: navbar}"></nav>
+
+<main class="container py-5 flex-grow-1">
+    <section class="auth-panel mx-auto">
+        <div class="auth-header text-center">
+            <p class="brand-detail-label mb-2">Create Account</p>
+            <h1>Join The German Trio</h1>
+            <p>Save your favorite models and prepare your future comparisons.</p>
+        </div>
+
+        <div th:if="${error != null || errorMessage != null}"
+             class="alert alert-danger"
+             th:text="${error != null ? error : errorMessage}">
+            Registration error
+        </div>
+
+        <form th:action="@{/register}" method="post" enctype="multipart/form-data" class="auth-form">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+            <div class="auth-grid">
+                <div class="auth-field">
+                    <label for="firstName">First name</label>
+                    <input type="text" id="firstName" name="firstName" class="form-control" required>
+                </div>
+
+                <div class="auth-field">
+                    <label for="lastName">Last name</label>
+                    <input type="text" id="lastName" name="lastName" class="form-control" required>
+                </div>
+
+                <div class="auth-field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+
+                <div class="auth-field">
+                    <label for="birthDate">Birth date</label>
+                    <input type="date" id="birthDate" name="birthDate" class="form-control" required>
+                </div>
+
+                <div class="auth-field auth-field-wide">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="auth-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+
+                <div class="auth-field">
+                    <label for="repeatedPassword">Repeat password</label>
+                    <input type="password" id="repeatedPassword" name="repeatedPassword" class="form-control" required>
+                </div>
+
+                <div class="auth-field auth-field-wide">
+                    <label for="profilePhoto">Profile photo</label>
+                    <input type="file" id="profilePhoto" name="profilePhoto" class="form-control" accept="image/*">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-dark auth-submit">Create account</button>
+        </form>
+
+        <p class="auth-switch mb-0">
+            Already have an account?
+            <a th:href="@{/login}">Log in</a>
+        </p>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

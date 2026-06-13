@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Profile - The German Trio')}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="~{fragments :: navbar}"></nav>
+
+<main class="container py-5 flex-grow-1">
+    <section class="profile-panel mx-auto">
+        <div class="profile-header">
+            <div class="profile-photo-wrap">
+                <img th:if="${user.profilePhotoUrl != null and !#strings.isEmpty(user.profilePhotoUrl)}"
+                     th:src="${user.profilePhotoUrl}"
+                     th:alt="${user.username}">
+                <div th:unless="${user.profilePhotoUrl != null and !#strings.isEmpty(user.profilePhotoUrl)}"
+                     class="profile-photo-placeholder">
+                    <span th:text="${user.firstName != null and !#strings.isEmpty(user.firstName) ? #strings.substring(user.firstName, 0, 1) : 'U'}">U</span>
+                </div>
+            </div>
+
+            <div class="profile-title">
+                <p class="brand-detail-label mb-2">My Profile</p>
+                <h1 th:text="${user.firstName + ' ' + user.lastName}">User Name</h1>
+                <p th:text="${'@' + user.username}">@username</p>
+            </div>
+        </div>
+
+        <dl class="profile-details">
+            <div>
+                <dt>First name</dt>
+                <dd th:text="${user.firstName}">First</dd>
+            </div>
+
+            <div>
+                <dt>Last name</dt>
+                <dd th:text="${user.lastName}">Last</dd>
+            </div>
+
+            <div>
+                <dt>Username</dt>
+                <dd th:text="${user.username}">username</dd>
+            </div>
+
+            <div>
+                <dt>Email</dt>
+                <dd th:text="${user.email}">email@example.com</dd>
+            </div>
+
+            <div>
+                <dt>Birth date</dt>
+                <dd th:text="${#temporals.format(user.birthDate, 'dd MMM yyyy')}">01 Jan 2000</dd>
+            </div>
+
+            <div>
+                <dt>Account created</dt>
+                <dd th:text="${#temporals.format(user.createdAt, 'dd MMM yyyy')}">01 Jan 2026</dd>
+            </div>
+
+            <div>
+                <dt>Role</dt>
+                <dd th:text="${user.admin ? 'Admin' : 'User'}">User</dd>
+            </div>
+        </dl>
+    </section>
+
+    <section class="profile-placeholder-grid mx-auto">
+        <article class="profile-placeholder-card">
+            <h2>Favorite Cars</h2>
+            <p>Your favorite cars will appear here later.</p>
+        </article>
+
+        <article class="profile-placeholder-card">
+            <h2>Notifications</h2>
+            <p>Your notifications will appear here later.</p>
+        </article>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

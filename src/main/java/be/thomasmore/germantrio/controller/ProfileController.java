@@ -37,9 +37,14 @@ public class ProfileController {
 
         AppUser user = appUser.get();
         List<CarModel> favoriteCars = new ArrayList<>(user.getFavoriteCars());
+        List<CarModel> favoriteCarsPreview = favoriteCars.stream()
+                .limit(2)
+                .toList();
 
         model.addAttribute("user", user);
         model.addAttribute("favoriteCars", favoriteCars);
+        model.addAttribute("favoriteCarsPreview", favoriteCarsPreview);
+        model.addAttribute("favoriteCarsCount", favoriteCars.size());
 
         return "profile";
     }

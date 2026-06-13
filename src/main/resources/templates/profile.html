@@ -72,10 +72,10 @@
                 <h2 class="m-0">Favorite Cars</h2>
             </div>
 
-            <p th:if="${#lists.isEmpty(favoriteCars)}">You have not saved any favorite cars yet.</p>
+            <p th:if="${favoriteCarsCount == 0}">You have not saved any favorite cars yet.</p>
 
-            <div th:unless="${#lists.isEmpty(favoriteCars)}" class="profile-favorite-grid">
-                <article th:each="car : ${favoriteCars}" class="profile-favorite-card">
+            <div th:if="${favoriteCarsCount > 0}" class="profile-favorite-grid">
+                <article th:each="car : ${favoriteCarsPreview}" class="profile-favorite-card">
                     <div class="profile-favorite-image-wrap">
                         <img th:src="${car.imageUrl}" th:alt="${car.name}">
                     </div>
@@ -108,6 +108,10 @@
                     </div>
                 </article>
             </div>
+
+            <a th:if="${favoriteCarsCount > 2}" th:href="@{/favorites}" class="btn btn-outline-dark profile-favorite-view-all">
+                View all favorite cars
+            </a>
         </article>
 
         <article class="profile-placeholder-card">

@@ -67,8 +67,47 @@
 
     <section class="profile-placeholder-grid mx-auto">
         <article class="profile-placeholder-card">
-            <h2>Favorite Cars</h2>
-            <p>Your favorite cars will appear here later.</p>
+            <div class="profile-section-header">
+                <img th:src="@{/foto/icons/saved-cars-white.png}" alt="" class="profile-section-icon">
+                <h2 class="m-0">Favorite Cars</h2>
+            </div>
+
+            <p th:if="${#lists.isEmpty(favoriteCars)}">You have not saved any favorite cars yet.</p>
+
+            <div th:unless="${#lists.isEmpty(favoriteCars)}" class="profile-favorite-grid">
+                <article th:each="car : ${favoriteCars}" class="profile-favorite-card">
+                    <div class="profile-favorite-image-wrap">
+                        <img th:src="${car.imageUrl}" th:alt="${car.name}">
+                    </div>
+
+                    <div class="profile-favorite-body">
+                        <p class="profile-favorite-brand" th:text="${car.brand.name}">Brand</p>
+                        <h3 th:text="${car.name}">Model</h3>
+
+                        <dl class="profile-favorite-specs">
+                            <div>
+                                <dt>Horsepower</dt>
+                                <dd th:text="${car.horsepower} + ' HP'">0 HP</dd>
+                            </div>
+                            <div>
+                                <dt>Base Price</dt>
+                                <dd th:text="'EUR ' + ${car.basePriceEur}">EUR 0</dd>
+                            </div>
+                        </dl>
+
+                        <div class="profile-favorite-actions">
+                            <a th:href="@{|/carmodels/${car.id}|}" class="btn btn-outline-dark profile-favorite-details">View Details</a>
+
+                            <form th:action="@{|/favorites/${car.id}/toggle|}" method="post" class="profile-favorite-form">
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                                <button type="submit" class="car-detail-favorite-btn">
+                                    <img th:src="@{/foto/icons/favorites-saved.png}" alt="Remove from favorites">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </article>
 
         <article class="profile-placeholder-card">

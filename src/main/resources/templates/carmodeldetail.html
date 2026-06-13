@@ -12,10 +12,29 @@
     <div class="car-detail-header">
       <a th:href="@{|/brands/${brandId}|}" class="btn btn-outline-dark car-detail-back">&larr; Back to Brand</a>
 
-      <a th:href="@{/compare(leftCarId=${car.id})}" class="car-detail-compare-btn">
-        <img th:src="@{/foto/icons/compare-alt-icon-white.png}" alt="" class="car-detail-compare-icon">
-        <span>Compare this car</span>
-      </a>
+      <div class="car-detail-actions">
+        <a th:href="@{/compare(leftCarId=${car.id})}" class="car-detail-compare-btn">
+          <img th:src="@{/foto/icons/compare-alt-icon-white.png}" alt="" class="car-detail-compare-icon">
+          <span>Compare this car</span>
+        </a>
+
+        <form th:if="${isAuthenticatedUser}"
+              th:action="@{|/favorites/${car.id}/toggle|}"
+              method="post"
+              class="car-detail-favorite-form">
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+          <button type="submit" class="car-detail-favorite-btn">
+            <img th:src="${isFavorite} ? @{/foto/icons/favorites-saved.png} : @{/foto/icons/save-favorites.png}"
+                 th:alt="${isFavorite} ? 'Remove from favorites' : 'Add to favorites'">
+          </button>
+        </form>
+
+        <a th:unless="${isAuthenticatedUser}"
+           th:href="@{/login}"
+           class="car-detail-favorite-btn">
+          <img th:src="@{/foto/icons/save-favorites.png}" alt="Log in to add to favorites">
+        </a>
+      </div>
 
       <div class="car-detail-title">
         <p class="car-detail-brand mb-2" th:text="${car.brand.name}">Brand</p>

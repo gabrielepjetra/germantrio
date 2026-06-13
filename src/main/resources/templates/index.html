@@ -20,6 +20,25 @@
             <a th:href="@{/brands/{id}(id=${brand.id})}" class="text-decoration-none">
               <div class="card h-100 shadow-sm brand-card text-center">
                 <div class="card-body p-4">
+
+                  <img th:if="${brand.name == 'BMW'}"
+                       th:src="@{/foto/bmw/bmw-logo.png}"
+                       class="brand-logo mb-4"
+                       alt="BMW logo"
+                       style="width: 100px;">
+
+                  <img th:if="${brand.name == 'Audi'}"
+                       th:src="@{/foto/audi/audi-logo.png}"
+                       class="brand-logo mb-4"
+                       alt="Audi logo"
+                       style="height: 100px;">
+
+                  <img th:if="${brand.name == 'Mercedes' || brand.name == 'Mercedes-Benz'}"
+                       th:src="@{/foto/mercedes/mercedes-logo.png}"
+                       class="brand-logo mb-4"
+                       alt="Mercedes-Benz logo"
+                       style="width: 100px;">
+
                   <h3 class="card-title text-custom fw-bold" th:text="${brand.name}">
                     Brand name
                   </h3>

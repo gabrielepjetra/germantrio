@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 
@@ -18,6 +20,8 @@ public class Notification {
     private long id;
 
     @Column(nullable = false, length = 500)
+    @NotBlank(message = "Notification message is required.")
+    @Size(max = 500, message = "Notification message must be 500 characters or fewer.")
     private String message;
 
     private LocalDateTime createdAt;

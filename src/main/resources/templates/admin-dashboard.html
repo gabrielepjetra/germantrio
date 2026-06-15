@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Admin Dashboard - The German Trio')}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="~{fragments :: navbar}"></nav>
+
+<main class="container py-5 flex-grow-1">
+    <section class="admin-dashboard mx-auto">
+        <p class="brand-detail-label mb-2">Control Panel</p>
+        <h1>Admin Dashboard</h1>
+        <p class="admin-dashboard-intro">
+            Manage the main content and community tools for The German Trio from one place.
+        </p>
+
+        <div class="admin-dashboard-grid">
+            <a th:href="@{/admin/carmodels}" class="admin-dashboard-card">
+                <span>01</span>
+                <h2>Manage car models</h2>
+                <p>Create, update, and review car model information.</p>
+            </a>
+
+            <a th:href="@{/admin/notifications}" class="admin-dashboard-card">
+                <span>02</span>
+                <h2>Send global notification</h2>
+                <p>Send a notification to every registered user.</p>
+            </a>
+
+            <a th:href="@{/admin/users}" class="admin-dashboard-card">
+                <span>03</span>
+                <h2>Manage users</h2>
+                <p>Review accounts, ban users, and manage temporary comment mutes.</p>
+            </a>
+
+            <a th:href="@{/admin/blacklist}" class="admin-dashboard-card">
+                <span>04</span>
+                <h2>Manage blacklist</h2>
+                <p>Add or remove email addresses that cannot register.</p>
+            </a>
+
+            <a th:href="@{/admin/comments}" class="admin-dashboard-card">
+                <span>05</span>
+                <h2>Manage comments</h2>
+                <p>Review and delete comments or replies.</p>
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

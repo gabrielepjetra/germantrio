@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.security.Principal;
 import java.util.Optional;
 
@@ -52,12 +54,41 @@ public class FavoriteController {
 
         appUserRepository.save(user);
 
-        String referer = request.getHeader("Referer");
+        return "redirect:" + getLocalRedirectTarget(request.getHeader("Referer"), request);
+    }
 
+    private String getLocalRedirectTarget(String referer, HttpServletRequest request) {
         if (referer == null || referer.isBlank()) {
-            return "redirect:/profile";
+            return "/profile";
         }
 
-        return "redirect:" + referer;
+        try {
+            URI refererUri = new URI(referer);
+
+            String requestScheme = request.getScheme();
+            String requestHost = request.getServerName();
+            int requestPort = request.getServerPort();
+
+            boolean sameApplication = requestScheme.equalsIgnoreCase(refererUri.getScheme())
+                    && requestHost.equalsIgnoreCase(refererUri.getHost())
+                    && requestPort == getEffectivePort(refererUri);
+
+            if (!sameApplication || refererUri.getPath() == null || refererUri.getPath().isBlank()) {
+                return "/profile";
+            }
+
+            return refererUri.getPath()
+                    + (refererUri.getQuery() == null ? "" : "?" + refererUri.getQuery());
+        } catch (URISyntaxException | IllegalArgumentException e) {
+            return "/profile";
+        }
+    }
+
+    private int getEffectivePort(URI uri) {
+        if (uri.getPort() != -1) {
+            return uri.getPort();
+        }
+
+        return "https".equalsIgnoreCase(uri.getScheme()) ? 443 : 80;
     }
 }

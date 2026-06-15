@@ -89,10 +89,11 @@ if (-not (Test-Path -Path $MAVEN_M2_PATH)) {
 }
 
 $MAVEN_WRAPPER_DISTS = $null
-if ((Get-Item $MAVEN_M2_PATH).Target[0] -eq $null) {
-  $MAVEN_WRAPPER_DISTS = "$MAVEN_M2_PATH/wrapper/dists"
+$MAVEN_M2_ITEM = Get-Item $MAVEN_M2_PATH
+if ($MAVEN_M2_ITEM.Target -and $MAVEN_M2_ITEM.Target.Count -gt 0) {
+  $MAVEN_WRAPPER_DISTS = $MAVEN_M2_ITEM.Target[0] + "/wrapper/dists"
 } else {
-  $MAVEN_WRAPPER_DISTS = (Get-Item $MAVEN_M2_PATH).Target[0] + "/wrapper/dists"
+  $MAVEN_WRAPPER_DISTS = "$MAVEN_M2_PATH/wrapper/dists"
 }
 
 $MAVEN_HOME_PARENT = "$MAVEN_WRAPPER_DISTS/$distributionUrlNameMain"
@@ -103,6 +104,19 @@ if (Test-Path -Path "$MAVEN_HOME" -PathType Container) {
   Write-Verbose "found existing MAVEN_HOME at $MAVEN_HOME"
   Write-Output "MVN_CMD=$MAVEN_HOME/bin/$MVN_CMD"
   exit $?
+}
+
+$LEGACY_MAVEN_HOME_PARENT = "$MAVEN_WRAPPER_DISTS/$distributionUrlNameMain-bin"
+if (Test-Path -Path "$LEGACY_MAVEN_HOME_PARENT" -PathType Container) {
+  Get-ChildItem -Path "$LEGACY_MAVEN_HOME_PARENT" -Directory | ForEach-Object {
+    $legacyMavenHome = Join-Path $_.FullName $distributionUrlNameMain
+    $legacyMavenCommand = Join-Path $legacyMavenHome "bin/$MVN_CMD"
+    if (Test-Path -Path $legacyMavenCommand -PathType Leaf) {
+      Write-Verbose "found existing legacy MAVEN_HOME at $legacyMavenHome"
+      Write-Output "MVN_CMD=$legacyMavenCommand"
+      exit $?
+    }
+  }
 }
 
 if (! $distributionUrlNameMain -or ($distributionUrlName -eq $distributionUrlNameMain)) {

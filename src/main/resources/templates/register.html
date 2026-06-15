@@ -27,17 +27,17 @@
             <div class="auth-grid">
                 <div class="auth-field">
                     <label for="firstName">First name</label>
-                    <input type="text" id="firstName" name="firstName" class="form-control" required>
+                    <input type="text" id="firstName" name="firstName" class="form-control" maxlength="50" required>
                 </div>
 
                 <div class="auth-field">
                     <label for="lastName">Last name</label>
-                    <input type="text" id="lastName" name="lastName" class="form-control" required>
+                    <input type="text" id="lastName" name="lastName" class="form-control" maxlength="50" required>
                 </div>
 
                 <div class="auth-field">
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" class="form-control" required>
+                    <input type="text" id="username" name="username" class="form-control" minlength="3" maxlength="30" required>
                 </div>
 
                 <div class="auth-field">
@@ -47,12 +47,12 @@
 
                 <div class="auth-field auth-field-wide">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
+                    <input type="email" id="email" name="email" class="form-control" maxlength="100" required>
                 </div>
 
                 <div class="auth-field">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" required>
+                    <input type="password" id="password" name="password" class="form-control" minlength="3" maxlength="255" required>
                 </div>
 
                 <div class="auth-field">
@@ -62,7 +62,7 @@
 
                 <div class="auth-field auth-field-wide">
                     <label for="profilePhoto">Profile photo</label>
-                    <input type="file" id="profilePhoto" name="profilePhoto" class="form-control" accept="image/*">
+                    <input type="file" id="profilePhoto" name="profilePhoto" class="form-control" accept="image/png,image/jpeg,image/webp">
                 </div>
             </div>
 

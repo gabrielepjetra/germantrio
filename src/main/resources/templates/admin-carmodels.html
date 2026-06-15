@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Manage Car Models - The German Trio')}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="~{fragments :: navbar}"></nav>
+
+<main class="container py-5 flex-grow-1">
+    <section class="admin-manage-page mx-auto">
+        <div class="admin-page-header">
+            <a th:href="@{/admin}" class="btn btn-outline-dark">&larr; Back to Admin</a>
+            <div>
+                <p class="brand-detail-label mb-2">Admin</p>
+                <h1>Manage Car Models</h1>
+            </div>
+            <a th:href="@{/admin/carmodels/new}" class="nav-auth-button">Add new model</a>
+        </div>
+
+        <div class="admin-carmodel-grid">
+            <article th:each="car : ${cars}" class="admin-carmodel-card">
+                <div class="admin-carmodel-image-wrap">
+                    <img th:src="@{${car.imageUrl}}" th:alt="${car.name}" class="admin-carmodel-img">
+                </div>
+
+                <div class="admin-carmodel-body">
+                    <p class="admin-carmodel-brand" th:text="${car.brand.name}">BMW</p>
+                    <h2 th:text="${car.name}">M3</h2>
+
+                    <dl class="admin-carmodel-specs">
+                        <div>
+                            <dt>Horsepower</dt>
+                            <dd th:text="|${car.horsepower} hp|">510 hp</dd>
+                        </div>
+                        <div>
+                            <dt>Drivetrain</dt>
+                            <dd th:text="${car.drivetrain}">RWD</dd>
+                        </div>
+                        <div>
+                            <dt>Base price</dt>
+                            <dd th:text="|EUR ${car.basePriceEur}|">EUR 90000</dd>
+                        </div>
+                    </dl>
+
+                    <div class="admin-row-actions">
+                        <a th:href="@{|/admin/carmodels/${car.id}/edit|}" class="btn btn-outline-dark btn-sm">Edit</a>
+                        <a th:href="@{|/carmodels/${car.id}|}" class="btn btn-outline-dark btn-sm">Public detail</a>
+                    </div>
+                </div>
+            </article>
+
+            <div th:if="${#lists.isEmpty(cars)}" class="admin-empty-state">
+                No car models found.
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

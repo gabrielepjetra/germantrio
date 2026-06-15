@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments :: head('Brands - The German Trio')}"></head>
-<body class="bg-custom text-light">
+<body class="bg-custom text-light d-flex flex-column min-vh-100">
 
 <nav th:replace="~{fragments :: navbar}"></nav>
 
-  <main class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-9">
+  <main class="container py-5 flex-grow-1">
+    <section class="about-panel mx-auto">
 
+      <div class="about-header">
         <h6 class="text-uppercase fw-bold text-custom mb-2">About the Creator</h6>
         <h2 class="display-5 fw-bold mb-4">Hi, I'm Gabriele.</h2>
-
-        <p class="lead text-dark-gray">
-          As an Audi owner and a lifelong car enthusiast, I know that choosing between the "Big Three" can be a struggle.
-        </p>
-
-        <p>
-          Online forums often turn simple questions into an <strong>all-out war</strong>. Instead of getting clear answers, you end up with more doubts than when you started, depending on which brand the community favors more.
-        </p>
-
-        <p>
-          That is why I created <strong>The German Trio (TGT)</strong>. My goal is to stop the noise and provide a neutral platform where you can compare models based on your actual needs - whether you're looking for pure sportiness, ultimate comfort, or the perfect mix of both.
-        </p>
-
-        <div class="border-start border-4 border-audi-red bg-mercedes-black p-4 rounded-3 mt-4">
-          <p class="fst-italic mb-0 text-dark-gray">
-            "I built this for you to find the car that truly fits your life, without the bias of online debates."
-          </p>
-        </div>
-
-        <div class="mt-5">
-          <a th:href="@{/contact}" class="btn btn-outline-dark w-100 w-md-auto px-4">Contact Me</a>
-        </div>
-
       </div>
-    </div>
-  </main>
 
-  <section class="py-5 bg-mercedes-black">
-    <div class="container text-center">
+      <p class="lead text-dark-gray">
+        As an Audi owner and a lifelong car enthusiast, I know that choosing between the "Big Three" can be a struggle.
+      </p>
+
+      <p>
+        Online forums often turn simple questions into an <strong>all-out war</strong>. Instead of getting clear answers, you end up with more doubts than when you started, depending on which brand the community favors more.
+      </p>
+
+      <p>
+        That is why I created <strong>The German Trio (TGT)</strong>. My goal is to stop the noise and provide a neutral platform where you can compare models based on your actual needs - whether you're looking for pure sportiness, ultimate comfort, or the perfect mix of both.
+      </p>
+
+      <div class="about-quote">
+        <p class="fst-italic mb-0 text-dark-gray">
+          "I built this for you to find the car that truly fits your life, without the bias of online debates."
+        </p>
+      </div>
+
+      <div class="about-actions">
+        <a th:href="@{/contact}" class="btn btn-outline-dark">Contact Me</a>
+      </div>
+
+    </section>
+
+    <section class="about-values">
       <div class="row g-4">
 
         <div class="col-md-4">
-          <h3 class="h5 fw-bold text-audi-red">No Bias</h3>
-          <p class="small text-dark-gray">Data-driven comparisons to help you decide objectively.</p>
+          <div class="about-value-card">
+            <h3 class="h5 fw-bold text-audi-red">No Bias</h3>
+            <p class="small text-dark-gray">Data-driven comparisons to help you decide objectively.</p>
+          </div>
         </div>
 
         <div class="col-md-4">
-          <h3 class="h5 fw-bold text-bmw-blue">Global Reach</h3>
-          <p class="small text-dark-gray">English-first platform for enthusiasts worldwide.</p>
+          <div class="about-value-card">
+            <h3 class="h5 fw-bold text-bmw-blue">Global Reach</h3>
+            <p class="small text-dark-gray">English-first platform for enthusiasts worldwide.</p>
+          </div>
         </div>
 
         <div class="col-md-4">
-          <h3 class="h5 fw-bold text-audi-red">Your Choice</h3>
-          <p class="small text-dark-gray">Sport, Comfort, or Hybrid - find what fits you.</p>
+          <div class="about-value-card">
+            <h3 class="h5 fw-bold text-audi-red">Your Choice</h3>
+            <p class="small text-dark-gray">Sport, Comfort, or Hybrid - find what fits you.</p>
+          </div>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
 <footer th:replace="~{fragments :: footer}"></footer>
 </body>

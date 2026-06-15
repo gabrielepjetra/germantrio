@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Manage Blacklisted Users - The German Trio')}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="~{fragments :: navbar}"></nav>
+
+<main class="container py-5 flex-grow-1">
+    <section class="admin-form-page mx-auto">
+        <div class="admin-page-header">
+            <a th:href="@{/admin}" class="btn btn-outline-dark">&larr; Back to Admin</a>
+            <div>
+                <p class="brand-detail-label mb-2">Admin</p>
+                <h1>Manage Blacklisted Users</h1>
+            </div>
+        </div>
+
+        <div th:if="${param.success}" class="alert alert-success" role="alert">
+            Email added to the blacklist.
+        </div>
+        <div th:if="${param.removed}" class="alert alert-success" role="alert">
+            Email removed from the blacklist.
+        </div>
+        <div th:if="${param.error}" class="alert alert-danger" role="alert">
+            Please enter a valid, unique email address.
+        </div>
+
+        <form th:action="@{/admin/blacklist}" method="post" class="admin-form-card admin-blacklist-form">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+            <div class="admin-form-grid">
+                <div>
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" name="email" type="email" class="form-control" maxlength="100" required>
+                </div>
+
+                <div>
+                    <label for="reason" class="form-label">Reason</label>
+                    <input id="reason" name="reason" type="text" class="form-control" maxlength="500">
+                </div>
+            </div>
+
+            <div class="admin-form-actions">
+                <button type="submit" class="nav-auth-button">Add to blacklist</button>
+            </div>
+        </form>
+
+        <section class="admin-form-card admin-blacklist-list">
+            <h2>Blacklisted emails</h2>
+
+            <p th:if="${#lists.isEmpty(blacklistedEmails)}">
+                No emails are currently blacklisted.
+            </p>
+
+            <div th:unless="${#lists.isEmpty(blacklistedEmails)}" class="admin-recent-notification-list">
+                <article th:each="entry : ${blacklistedEmails}" class="admin-blacklist-item">
+                    <div>
+                        <h3 th:text="${entry.email}">blocked@example.com</h3>
+                        <p th:text="${entry.reason != null and !#strings.isEmpty(entry.reason) ? entry.reason : 'No reason provided.'}">
+                            Reason
+                        </p>
+                        <time th:text="${#temporals.format(entry.createdAt, 'dd MMM yyyy HH:mm')}">
+                            01 Jan 2025 12:00
+                        </time>
+                    </div>
+
+                    <form th:action="@{|/admin/blacklist/${entry.id}/delete|}" method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                        <button type="submit" class="btn btn-outline-dark btn-sm">Remove</button>
+                    </form>
+                </article>
+            </div>
+        </section>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

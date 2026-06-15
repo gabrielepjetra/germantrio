@@ -2,6 +2,9 @@ package be.thomasmore.germantrio.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Brand {
     @Id
@@ -15,6 +18,9 @@ public class Brand {
     private String longDescription;
     private String flagship;
     private String imgUrl;
+
+    @OneToMany(mappedBy = "brand")
+    private List<CarModel> carModels = new ArrayList<>();
 
     public Brand() {
     }
@@ -65,5 +71,13 @@ public class Brand {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public List<CarModel> getCarModels() {
+        return carModels;
+    }
+
+    public void setCarModels(List<CarModel> carModels) {
+        this.carModels = carModels;
     }
 }

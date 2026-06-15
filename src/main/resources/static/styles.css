@@ -39,10 +39,6 @@ body {
     color: var(--audi-red) !important;
 }
 
-.nav-logout-form {
-    margin: 0;
-}
-
 .nav-auth-button {
     display: inline-flex;
     align-items: center;
@@ -298,6 +294,105 @@ body::after {
     font-weight: 800;
 }
 
+.brand-filter-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.brand-active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.brand-active-filters span {
+    padding: 0.4rem 0.7rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.brand-model-empty {
+    padding: 2rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    color: #cbd5e1;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.brand-filter-modal {
+    background: rgba(20, 20, 30, 0.98);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #ffffff;
+}
+
+.brand-filter-modal .modal-header,
+.brand-filter-modal .modal-footer {
+    border-color: rgba(255,255,255,0.1);
+}
+
+.brand-filter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.brand-filter-wide {
+    grid-column: 1 / -1;
+}
+
+.brand-filter-field label,
+.brand-filter-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--dark-gray);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+}
+
+.brand-filter-field .form-control,
+.brand-filter-field .form-select {
+    background-color: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.16);
+    color: #ffffff;
+}
+
+.brand-filter-field .form-control:focus,
+.brand-filter-field .form-select:focus {
+    border-color: var(--audi-red);
+    box-shadow: 0 0 0 0.2rem rgba(187,10,48,0.25);
+}
+
+.brand-filter-radios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.brand-filter-radios label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0.55rem 0.75rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
 .brand-model-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -535,6 +630,127 @@ body::after {
     font-weight: 700;
 }
 
+.contact-panel {
+    max-width: 680px;
+    padding: 2rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.contact-header {
+    margin-bottom: 1.5rem;
+}
+
+.contact-header h2 {
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.contact-header p {
+    color: #cbd5e1;
+}
+
+.contact-form {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.contact-field label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--dark-gray);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+}
+
+.contact-field .form-control {
+    background-color: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.16);
+    color: #ffffff;
+}
+
+.contact-field .form-control:focus {
+    border-color: var(--audi-red);
+    box-shadow: 0 0 0 0.2rem rgba(187,10,48,0.25);
+}
+
+.contact-field .form-control::placeholder {
+    color: #94a3b8;
+}
+
+.contact-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-panel {
+    max-width: 920px;
+    padding: 2.5rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.about-header {
+    max-width: 680px;
+}
+
+.about-panel p {
+    color: #d5d5d5;
+    line-height: 1.75;
+}
+
+.about-quote {
+    margin-top: 1.75rem;
+    padding: 1.4rem 1.5rem;
+    border-left: 4px solid var(--audi-red);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+}
+
+.about-actions {
+    margin-top: 2rem;
+}
+
+.about-actions .btn {
+    min-width: 150px;
+}
+
+.about-values {
+    max-width: 920px;
+    margin: 1.5rem auto 0;
+}
+
+.about-value-card {
+    height: 100%;
+    padding: 1.4rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+    text-align: center;
+}
+
+.about-value-card p {
+    margin-bottom: 0;
+}
+
+@media (max-width: 576px) {
+    .about-panel {
+        padding: 1.5rem;
+    }
+
+    .about-actions .btn {
+        width: 100%;
+    }
+}
+
 .auth-links span::before {
     content: "|";
     color: var(--dark-gray);
@@ -755,15 +971,6 @@ body::after {
     min-width: 0;
 }
 
-.profile-favorite-form {
-    margin: 0;
-}
-
-.profile-favorite-view-all {
-    display: inline-flex;
-    margin-top: 1rem;
-}
-
 .profile-notification-count {
     display: inline-flex;
     align-items: center;
@@ -831,11 +1038,6 @@ body::after {
 
 .profile-notification-link {
     flex: 0 0 auto;
-}
-
-.profile-notification-view-all {
-    display: inline-flex;
-    margin-top: 1rem;
 }
 
 .favorites-page {
@@ -1201,10 +1403,6 @@ body::after {
     width: 1.1rem;
     height: 1.1rem;
     object-fit: contain;
-}
-
-.car-detail-favorite-form {
-    margin: 0;
 }
 
 .car-detail-favorite-btn {
@@ -1733,6 +1931,21 @@ body::after {
         font-size: 1.6rem;
     }
 
+    .brand-filter-actions,
+    .brand-filter-modal .modal-footer {
+        flex-direction: column;
+    }
+
+    .brand-filter-actions .btn,
+    .brand-filter-modal .modal-footer .btn,
+    .brand-filter-modal .modal-footer .nav-auth-button {
+        width: 100%;
+    }
+
+    .brand-filter-grid {
+        grid-template-columns: 1fr;
+    }
+
     .brand-model-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -1787,5 +2000,436 @@ body::after {
 
     .car-spec-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+.admin-dashboard {
+    max-width: 1040px;
+}
+
+.admin-dashboard h1 {
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: 800;
+}
+
+.admin-dashboard-intro {
+    max-width: 640px;
+    margin-bottom: 1.5rem;
+    color: #cbd5e1;
+}
+
+.admin-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.admin-dashboard-card {
+    display: flex;
+    min-height: 180px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.4rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.admin-dashboard-card:hover,
+.admin-dashboard-card:focus {
+    border-color: var(--audi-red);
+    color: #ffffff;
+}
+
+.admin-dashboard-card span {
+    color: var(--audi-red);
+    font-weight: 800;
+}
+
+.admin-dashboard-card h2 {
+    margin: 0.75rem 0 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.admin-dashboard-card p {
+    margin: 0;
+    color: #cbd5e1;
+}
+
+.admin-manage-page,
+.admin-form-page {
+    max-width: 1120px;
+}
+
+.admin-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.admin-page-header h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.admin-table-card,
+.admin-form-card {
+    padding: 1.25rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.admin-table {
+    color: #ffffff;
+}
+
+.admin-table th {
+    color: #cbd5e1;
+    border-color: rgba(255,255,255,0.08);
+}
+
+.admin-table td {
+    color: #ffffff;
+    border-color: rgba(255,255,255,0.08);
+}
+
+.admin-car-thumb {
+    width: 86px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.admin-carmodel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.admin-carmodel-card {
+    min-width: 0;
+    overflow: hidden;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.admin-carmodel-image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 190px;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+}
+
+.admin-carmodel-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.admin-carmodel-body {
+    display: flex;
+    min-height: 270px;
+    flex-direction: column;
+    padding: 1.25rem;
+}
+
+.admin-carmodel-brand {
+    margin-bottom: 0.35rem;
+    color: var(--audi-red);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+}
+
+.admin-carmodel-body h2 {
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.admin-carmodel-specs {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0 0 1.25rem;
+}
+
+.admin-carmodel-specs div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.admin-carmodel-specs dt {
+    color: var(--dark-gray);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+}
+
+.admin-carmodel-specs dd {
+    margin: 0;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.admin-empty-state {
+    grid-column: 1 / -1;
+    padding: 2rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    color: #cbd5e1;
+    text-align: center;
+}
+
+.admin-row-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.admin-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.admin-form-wide {
+    grid-column: 1 / -1;
+}
+
+.admin-form-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.admin-notification-form {
+    margin-bottom: 1.25rem;
+}
+
+.admin-recent-notifications h2 {
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.admin-recent-notification-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.admin-recent-notification-item {
+    padding: 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+}
+
+.admin-recent-notification-item p {
+    margin-bottom: 0.35rem;
+    color: #ffffff;
+}
+
+.admin-recent-notification-item time {
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.admin-blacklist-form {
+    margin-bottom: 1.25rem;
+}
+
+.admin-blacklist-list h2 {
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.admin-blacklist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+}
+
+.admin-blacklist-item h3 {
+    margin-bottom: 0.35rem;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.admin-blacklist-item p {
+    margin-bottom: 0.25rem;
+    color: #cbd5e1;
+}
+
+.admin-blacklist-item time {
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.admin-user-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.admin-user-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.admin-user-card h2 {
+    margin-bottom: 0.65rem;
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.admin-user-card p,
+.admin-user-card time {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #cbd5e1;
+}
+
+.admin-user-id {
+    color: var(--audi-red) !important;
+    font-weight: 800;
+}
+
+.admin-user-actions,
+.admin-user-mute-form {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.admin-user-mute-form {
+    min-width: 240px;
+}
+
+.admin-comment-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.admin-comment-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.admin-comment-main {
+    min-width: 0;
+}
+
+.admin-comment-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.admin-comment-meta span {
+    color: var(--audi-red);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.admin-comment-card h2 {
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.admin-comment-card p,
+.admin-comment-card time {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #cbd5e1;
+}
+
+.admin-comment-content {
+    margin-top: 0.75rem;
+    color: #ffffff !important;
+}
+
+@media (max-width: 991px) {
+    .admin-carmodel-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .admin-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-carmodel-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-page-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .admin-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-user-card {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .admin-comment-card {
+        flex-direction: column;
     }
 }

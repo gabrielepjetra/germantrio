@@ -8,6 +8,7 @@ import be.thomasmore.germantrio.repository.AppUserRepository;
 import be.thomasmore.germantrio.repository.CarModelRepository;
 import be.thomasmore.germantrio.repository.CommentRepository;
 import be.thomasmore.germantrio.repository.NotificationRepository;
+import jakarta.validation.Validator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,19 +21,24 @@ import java.util.Optional;
 @Controller
 public class CommentController {
 
+    private static final int MAX_CONTENT_LENGTH = 1000;
+
     private final CommentRepository commentRepository;
     private final CarModelRepository carModelRepository;
     private final AppUserRepository appUserRepository;
     private final NotificationRepository notificationRepository;
+    private final Validator validator;
 
     public CommentController(CommentRepository commentRepository,
                              CarModelRepository carModelRepository,
                              AppUserRepository appUserRepository,
-                             NotificationRepository notificationRepository) {
+                             NotificationRepository notificationRepository,
+                             Validator validator) {
         this.commentRepository = commentRepository;
         this.carModelRepository = carModelRepository;
         this.appUserRepository = appUserRepository;
         this.notificationRepository = notificationRepository;
+        this.validator = validator;
     }
 
     @PostMapping("/carmodels/{carId}/comments")
@@ -43,7 +49,7 @@ public class CommentController {
             return "redirect:/login";
         }
 
-        if (content == null || content.isBlank()) {
+        if (isInvalidContent(content)) {
             return "redirect:/carmodels/" + carId;
         }
 
@@ -54,15 +60,25 @@ public class CommentController {
             return "redirect:/login";
         }
 
+        AppUser user = appUser.get();
+        if (isCurrentlyMuted(user)) {
+            return "redirect:/carmodels/" + carId + "?muted";
+        }
+        clearExpiredMute(user);
+
         if (carModel.isEmpty()) {
             return "redirect:/";
         }
 
         Comment comment = new Comment();
         comment.setContent(content.trim());
-        comment.setAppUser(appUser.get());
+        comment.setAppUser(user);
         comment.setCarModel(carModel.get());
         comment.setCreatedAt(LocalDateTime.now());
+
+        if (!validator.validate(comment).isEmpty()) {
+            return "redirect:/carmodels/" + carId;
+        }
 
         commentRepository.save(comment);
 
@@ -78,37 +94,49 @@ public class CommentController {
             return "redirect:/login";
         }
 
-        if (content == null || content.isBlank()) {
+        if (isInvalidContent(content)) {
             return "redirect:/carmodels/" + carId;
         }
 
         Optional<AppUser> appUser = appUserRepository.findByEmail(principal.getName());
         Optional<CarModel> carModel = carModelRepository.findById(carId);
-        Optional<Comment> parentComment = commentRepository.findById(commentId);
+        Optional<Comment> answeredComment = commentRepository.findById(commentId);
 
         if (appUser.isEmpty()) {
             return "redirect:/login";
         }
 
-        if (carModel.isEmpty() || parentComment.isEmpty()) {
+        AppUser user = appUser.get();
+        if (isCurrentlyMuted(user)) {
+            return "redirect:/carmodels/" + carId + "?muted";
+        }
+        clearExpiredMute(user);
+
+        if (carModel.isEmpty() || answeredComment.isEmpty()) {
             return "redirect:/";
         }
 
-        if (parentComment.get().getCarModel().getId() != carId) {
+        Comment directlyAnsweredComment = answeredComment.get();
+        if (directlyAnsweredComment.getCarModel().getId() != carId) {
             return "redirect:/carmodels/" + carId;
         }
 
+        Comment topLevelParent = findTopLevelParent(directlyAnsweredComment);
         Comment reply = new Comment();
         reply.setContent(content.trim());
-        reply.setAppUser(appUser.get());
+        reply.setAppUser(user);
         reply.setCarModel(carModel.get());
-        reply.setParentComment(parentComment.get());
+        reply.setParentComment(topLevelParent);
         reply.setCreatedAt(LocalDateTime.now());
+
+        if (!validator.validate(reply).isEmpty()) {
+            return "redirect:/carmodels/" + carId;
+        }
 
         commentRepository.save(reply);
 
-        AppUser replyAuthor = appUser.get();
-        AppUser parentAuthor = parentComment.get().getAppUser();
+        AppUser replyAuthor = user;
+        AppUser parentAuthor = directlyAnsweredComment.getAppUser();
 
         if (replyAuthor.getId() != parentAuthor.getId()) {
             Notification notification = new Notification();
@@ -121,5 +149,29 @@ public class CommentController {
         }
 
         return "redirect:/carmodels/" + carId;
+    }
+
+    private boolean isInvalidContent(String content) {
+        return content == null || content.isBlank() || content.trim().length() > MAX_CONTENT_LENGTH;
+    }
+
+    private Comment findTopLevelParent(Comment comment) {
+        Comment currentComment = comment;
+        while (currentComment.getParentComment() != null) {
+            currentComment = currentComment.getParentComment();
+        }
+        return currentComment;
+    }
+
+    private boolean isCurrentlyMuted(AppUser appUser) {
+        return appUser.getMutedUntil() != null && appUser.getMutedUntil().isAfter(LocalDateTime.now());
+    }
+
+    private void clearExpiredMute(AppUser appUser) {
+        if (appUser.getMutedUntil() != null && !appUser.getMutedUntil().isAfter(LocalDateTime.now())) {
+            appUser.setMutedUntil(null);
+            appUser.setMuteReason(null);
+            appUserRepository.save(appUser);
+        }
     }
 }

@@ -31,7 +31,7 @@
             <div th:unless="${#lists.isEmpty(notifications)}" class="profile-notification-list notifications-list">
                 <article th:each="notification : ${notifications}"
                          class="profile-notification-item"
-                         th:classappend="${!notification.read} ? ' profile-notification-unread' : ' profile-notification-read'">
+                         th:classappend="${unreadNotificationIds.contains(notification.id)} ? ' profile-notification-unread' : ' profile-notification-read'">
                     <div class="profile-notification-main">
                         <span class="profile-notification-dot" aria-hidden="true"></span>
                         <div>

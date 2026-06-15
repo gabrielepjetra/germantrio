@@ -98,7 +98,7 @@
                         <div class="profile-favorite-actions">
                             <a th:href="@{|/carmodels/${car.id}|}" class="btn btn-outline-dark profile-favorite-details">View Details</a>
 
-                            <form th:action="@{|/favorites/${car.id}/toggle|}" method="post" class="profile-favorite-form">
+                            <form th:action="@{|/favorites/${car.id}/toggle|}" method="post" class="m-0">
                                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                                 <button type="submit" class="car-detail-favorite-btn">
                                     <img th:src="@{/foto/icons/favorites-saved.png}" alt="Remove from favorites">
@@ -109,7 +109,7 @@
                 </article>
             </div>
 
-            <a th:if="${favoriteCarsCount > 2}" th:href="@{/favorites}" class="btn btn-outline-dark profile-favorite-view-all">
+            <a th:if="${favoriteCarsCount > 2}" th:href="@{/favorites}" class="btn btn-outline-dark d-inline-flex mt-3">
                 View all favorite cars
             </a>
         </article>
@@ -144,7 +144,7 @@
                 </article>
             </div>
 
-            <a th:if="${notificationsCount > 0}" th:href="@{/notifications}" class="btn btn-outline-dark profile-notification-view-all">
+            <a th:if="${notificationsCount > 0}" th:href="@{/notifications}" class="btn btn-outline-dark d-inline-flex mt-3">
                 View all notifications
             </a>
         </article>

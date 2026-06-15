@@ -10,6 +10,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,6 +26,8 @@ public class Comment {
     private long id;
 
     @Column(nullable = false, length = 1000)
+    @NotBlank(message = "Comment content is required.")
+    @Size(max = 1000, message = "Comment content must be 1000 characters or fewer.")
     private String content;
 
     private LocalDateTime createdAt;

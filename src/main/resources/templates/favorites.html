@@ -50,7 +50,7 @@
                         <div class="profile-favorite-actions">
                             <a th:href="@{|/carmodels/${car.id}|}" class="btn btn-outline-dark profile-favorite-details">View Details</a>
 
-                            <form th:action="@{|/favorites/${car.id}/toggle|}" method="post" class="profile-favorite-form">
+                            <form th:action="@{|/favorites/${car.id}/toggle|}" method="post" class="m-0">
                                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                                 <button type="submit" class="car-detail-favorite-btn">
                                     <img th:src="@{/foto/icons/favorites-saved.png}" alt="Remove from favorites">

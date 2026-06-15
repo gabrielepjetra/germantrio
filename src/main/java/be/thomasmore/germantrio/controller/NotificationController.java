@@ -7,7 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class NotificationController {
@@ -28,18 +30,24 @@ public class NotificationController {
         List<Notification> notifications = notificationRepository.findByRecipientEmailOrderByCreatedAtDesc(email);
         long unreadNotificationCount = notificationRepository.countByRecipientEmailAndReadFalse(email);
 
-        model.addAttribute("notifications", notifications);
-        model.addAttribute("unreadNotificationCount", unreadNotificationCount);
-
-        boolean hasUnreadNotifications = false;
+        Set<Long> unreadNotificationIds = new HashSet<>();
         for (Notification notification : notifications) {
             if (!notification.isRead()) {
-                notification.setRead(true);
-                hasUnreadNotifications = true;
+                unreadNotificationIds.add(notification.getId());
             }
         }
 
-        if (hasUnreadNotifications) {
+        model.addAttribute("notifications", notifications);
+        model.addAttribute("unreadNotificationCount", unreadNotificationCount);
+        model.addAttribute("unreadNotificationIds", unreadNotificationIds);
+
+        for (Notification notification : notifications) {
+            if (unreadNotificationIds.contains(notification.getId())) {
+                notification.setRead(true);
+            }
+        }
+
+        if (!unreadNotificationIds.isEmpty()) {
             notificationRepository.saveAll(notifications);
         }
 

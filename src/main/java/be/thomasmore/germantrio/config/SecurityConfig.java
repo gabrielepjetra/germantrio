@@ -2,6 +2,7 @@ package be.thomasmore.germantrio.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,7 +17,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
+                        .requestMatchers(HttpMethod.GET,
                                 "/",
                                 "/index",
                                 "/brands/**",
@@ -32,12 +33,22 @@ public class SecurityConfig {
                                 "/js/**",
                                 "/images/**"
                         ).permitAll()
+                        .requestMatchers(HttpMethod.POST,
+                                "/contact",
+                                "/register"
+                        ).permitAll()
+                        .requestMatchers(HttpMethod.POST,
+                                "/favorites/**",
+                                "/carmodels/*/comments",
+                                "/carmodels/*/comments/*/replies"
+                        ).authenticated()
                         .requestMatchers(
                                 "/profile/**",
-                                "/favorites/**"
+                                "/favorites/**",
+                                "/notifications/**"
                         ).authenticated()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .anyRequest().permitAll()
+                        .requestMatchers("/admin", "/admin/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")

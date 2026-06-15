@@ -11,4 +11,6 @@ public interface NotificationRepository extends CrudRepository<Notification, Lon
     List<Notification> findByRecipientEmailOrderByCreatedAtDesc(String email);
 
     long countByRecipientEmailAndReadFalse(String email);
+
+    List<Notification> findTop50ByRelatedCarModelIsNullOrderByCreatedAtDesc();
 }

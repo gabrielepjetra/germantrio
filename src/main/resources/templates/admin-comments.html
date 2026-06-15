@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Manage Comments - The German Trio')}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="~{fragments :: navbar}"></nav>
+
+<main class="container py-5 flex-grow-1">
+    <section class="admin-form-page mx-auto">
+        <div class="admin-page-header">
+            <a th:href="@{/admin}" class="btn btn-outline-dark">&larr; Back to Admin</a>
+            <div>
+                <p class="brand-detail-label mb-2">Admin</p>
+                <h1>Manage Comments</h1>
+            </div>
+        </div>
+
+        <div th:if="${param.deleted}" class="alert alert-success" role="alert">
+            Comment deleted successfully.
+        </div>
+        <div th:if="${param.error}" class="alert alert-danger" role="alert">
+            Comment could not be found.
+        </div>
+
+        <div class="admin-comment-list">
+            <article th:each="comment : ${comments}" class="admin-comment-card">
+                <div class="admin-comment-main">
+                    <div class="admin-comment-meta">
+                        <span th:text="|#${comment.id}|">#1</span>
+                        <span th:text="${comment.parentComment == null} ? 'Top-level comment' : 'Reply'">Type</span>
+                    </div>
+
+                    <h2 th:text="${comment.appUser.username}">username</h2>
+                    <p th:text="|Email: ${comment.appUser.email}|">Email</p>
+                    <p th:text="|Car model: ${comment.carModel.name}|">Car model</p>
+                    <time th:text="|Created: ${#temporals.format(comment.createdAt, 'dd MMM yyyy HH:mm')}|">
+                        Created
+                    </time>
+                    <p class="admin-comment-content" th:text="${comment.content}">Comment content</p>
+                </div>
+
+                <form th:action="@{|/admin/comments/${comment.id}/delete|}" method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                    <button type="submit" class="btn btn-outline-dark btn-sm">Delete</button>
+                </form>
+            </article>
+
+            <div th:if="${#lists.isEmpty(comments)}" class="admin-empty-state">
+                No comments found.
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

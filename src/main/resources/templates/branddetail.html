@@ -32,9 +32,31 @@
         <div class="brand-models-header">
             <p class="brand-detail-label mb-2">Model Lineup</p>
             <h2>Available Models</h2>
+            <div class="brand-filter-actions">
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#brandFilterModal">
+                    Filter models
+                </button>
+                <a th:href="@{/brands/{id}(id=${brand.id})}" class="btn btn-outline-dark">
+                    Clear filters
+                </a>
+            </div>
         </div>
 
-        <div class="brand-model-grid">
+        <div class="brand-active-filters"
+             th:if="${selectedEngineType != null || selectedDrivetrain != null || selectedTransmission != null || minHorsepower != null || maxBasePrice != null || maxZeroToHundred != null}">
+            <span th:if="${selectedEngineType != null}" th:text="|Engine: ${selectedEngineType}|">Engine</span>
+            <span th:if="${selectedDrivetrain != null}" th:text="|Drivetrain: ${selectedDrivetrain}|">Drivetrain</span>
+            <span th:if="${selectedTransmission != null}" th:text="|Transmission: ${selectedTransmission}|">Transmission</span>
+            <span th:if="${minHorsepower != null and !#strings.isEmpty(minHorsepower)}" th:text="|Min HP: ${minHorsepower}|">Min HP</span>
+            <span th:if="${maxBasePrice != null and !#strings.isEmpty(maxBasePrice)}" th:text="|Max price: EUR ${maxBasePrice}|">Max price</span>
+            <span th:if="${maxZeroToHundred != null and !#strings.isEmpty(maxZeroToHundred)}" th:text="|Max 0-100: ${maxZeroToHundred}s|">Max 0-100</span>
+        </div>
+
+        <div th:if="${#lists.isEmpty(cars)}" class="brand-model-empty">
+            No models match these filters.
+        </div>
+
+        <div th:unless="${#lists.isEmpty(cars)}" class="brand-model-grid">
             <article class="brand-model-card" th:each="car : ${cars}">
                 <a th:href="@{/carmodels/{id}(id=${car.id})}" class="brand-model-link">
                     <div class="brand-model-image-wrap">
@@ -67,6 +89,79 @@
             </article>
         </div>
     </section>
+
+    <div class="modal fade" id="brandFilterModal" tabindex="-1" aria-labelledby="brandFilterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content brand-filter-modal">
+                <form th:action="@{/brands/{id}(id=${brand.id})}" method="get">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="brandFilterModalLabel">Filter models</h2>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="brand-filter-grid">
+                            <div class="brand-filter-field">
+                                <label for="engineType">Engine type</label>
+                                <select id="engineType" name="engineType" class="form-select">
+                                    <option value="">Any</option>
+                                    <option th:each="option : ${engineTypes}"
+                                            th:value="${option}"
+                                            th:text="${option}"
+                                            th:selected="${selectedEngineType != null and option == selectedEngineType}">
+                                        Petrol
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="brand-filter-field">
+                                <label for="transmission">Transmission</label>
+                                <select id="transmission" name="transmission" class="form-select">
+                                    <option value="">Any</option>
+                                    <option th:each="option : ${transmissions}"
+                                            th:value="${option}"
+                                            th:text="${option}"
+                                            th:selected="${selectedTransmission != null and option == selectedTransmission}">
+                                        Automatic
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="brand-filter-field brand-filter-wide">
+                                <span class="brand-filter-label">Drivetrain</span>
+                                <div class="brand-filter-radios">
+                                    <label><input type="radio" name="drivetrain" value="" th:checked="${selectedDrivetrain == null}"> Any</label>
+                                    <label><input type="radio" name="drivetrain" value="FWD" th:checked="${selectedDrivetrain == 'FWD'}"> FWD</label>
+                                    <label><input type="radio" name="drivetrain" value="RWD" th:checked="${selectedDrivetrain == 'RWD'}"> RWD</label>
+                                    <label><input type="radio" name="drivetrain" value="AWD" th:checked="${selectedDrivetrain == 'AWD'}"> AWD</label>
+                                </div>
+                            </div>
+
+                            <div class="brand-filter-field">
+                                <label for="minHorsepower">Minimum horsepower</label>
+                                <input id="minHorsepower" name="minHorsepower" type="number" min="0" class="form-control" th:value="${minHorsepower}">
+                            </div>
+
+                            <div class="brand-filter-field">
+                                <label for="maxBasePrice">Maximum base price</label>
+                                <input id="maxBasePrice" name="maxBasePrice" type="number" min="0" step="0.01" class="form-control" th:value="${maxBasePrice}">
+                            </div>
+
+                            <div class="brand-filter-field">
+                                <label for="maxZeroToHundred">Maximum 0-100 time</label>
+                                <input id="maxZeroToHundred" name="maxZeroToHundred" type="number" min="0" step="0.1" class="form-control" th:value="${maxZeroToHundred}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a th:href="@{/brands/{id}(id=${brand.id})}" class="btn btn-outline-dark">Clear filters</a>
+                        <button type="submit" class="nav-auth-button">Apply filters</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 </main>
 

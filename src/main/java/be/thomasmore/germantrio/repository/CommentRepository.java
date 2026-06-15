@@ -9,6 +9,11 @@ import java.util.List;
 public interface CommentRepository extends CrudRepository<Comment, Long> {
     List<Comment> findByCarModelIdOrderByCreatedAtDesc(Long carModelId);
 
+    @EntityGraph(attributePaths = {"appUser", "carModel", "parentComment"})
+    List<Comment> findAllByOrderByCreatedAtDesc();
+
+    List<Comment> findByParentCommentId(Long parentCommentId);
+
     @EntityGraph(attributePaths = {"appUser", "replies", "replies.appUser"})
     List<Comment> findByCarModelIdAndParentCommentIsNullOrderByCreatedAtDesc(Long carModelId);
 }

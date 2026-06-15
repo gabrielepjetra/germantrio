@@ -1,6 +1,11 @@
 package be.thomasmore.germantrio.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,18 +19,44 @@ public class CarModel {
 
     @ManyToOne
     @JoinColumn(name = "brand_id",  nullable = false)
+    @NotNull(message = "Brand is required.")
     private Brand brand;
 
+    @NotBlank(message = "Model name is required.")
+    @Size(max = 100, message = "Model name must be 100 characters or fewer.")
     private String name;
+
+    @Size(max = 500, message = "Image URL must be 500 characters or fewer.")
     private String imageUrl;
+
+    @NotBlank(message = "Transmission is required.")
+    @Size(max = 50, message = "Transmission must be 50 characters or fewer.")
     private String transmission;
+
+    @Size(max = 100, message = "Engine config must be 100 characters or fewer.")
     private String engineConfig;
+
+    @NotBlank(message = "Engine type is required.")
+    @Size(max = 50, message = "Engine type must be 50 characters or fewer.")
     private String engineType;
+
+    @Min(value = 1, message = "Horsepower must be at least 1.")
     private int horsepower;
+
+    @Min(value = 1, message = "Torque must be at least 1.")
     private int torqueNm;
+
+    @NotBlank(message = "Drivetrain is required.")
+    @Size(max = 20, message = "Drivetrain must be 20 characters or fewer.")
     private String drivetrain;
+
+    @Min(value = 1, message = "Weight must be at least 1.")
     private int weightKg;
+
+    @Positive(message = "0-100 time must be positive.")
     private BigDecimal zeroToHundred;
+
+    @Positive(message = "Base price must be positive.")
     private BigDecimal basePriceEur;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

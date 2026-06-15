@@ -8,6 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -21,21 +24,37 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank(message = "First name is required.")
+    @Size(max = 50, message = "First name must be 50 characters or fewer.")
     private String firstName;
+
+    @NotBlank(message = "Last name is required.")
+    @Size(max = 50, message = "Last name must be 50 characters or fewer.")
     private String lastName;
 
     @Column(unique = true)
+    @NotBlank(message = "Username is required.")
+    @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters.")
     private String username;
 
     private LocalDate birthDate;
 
     @Column(unique = true)
+    @NotBlank(message = "Email is required.")
+    @Email(message = "Please enter a valid email address.")
+    @Size(max = 100, message = "Email must be 100 characters or fewer.")
     private String email;
 
+    @NotBlank(message = "Password is required.")
+    @Size(min = 3, max = 255, message = "Password must be at least 3 characters.")
     private String password;
     private String profilePhotoUrl;
     private LocalDateTime createdAt;
     private boolean admin = false;
+    @Column(nullable = false, columnDefinition = "boolean default false")
+    private boolean banned = false;
+    private LocalDateTime mutedUntil;
+    private String muteReason;
 
     @ManyToMany
     @JoinTable(
@@ -125,6 +144,30 @@ public class AppUser {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public boolean isBanned() {
+        return banned;
+    }
+
+    public void setBanned(boolean banned) {
+        this.banned = banned;
+    }
+
+    public LocalDateTime getMutedUntil() {
+        return mutedUntil;
+    }
+
+    public void setMutedUntil(LocalDateTime mutedUntil) {
+        this.mutedUntil = mutedUntil;
+    }
+
+    public String getMuteReason() {
+        return muteReason;
+    }
+
+    public void setMuteReason(String muteReason) {
+        this.muteReason = muteReason;
     }
 
     public List<CarModel> getFavoriteCars() {

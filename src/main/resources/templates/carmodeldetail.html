@@ -118,7 +118,8 @@
 
     <section class="car-comments-panel">
       <div class="car-comments-header">
-        <h2 class="car-detail-section-title">Comments</h2>
+        <img th:src="@{/foto/icons/comment-icon-white.png}" alt="" class="car-comments-icon">
+        <h2 class="car-detail-section-title pb-0 border-0">Comments</h2>
       </div>
 
       <div th:if="${#lists.isEmpty(comments)}" class="car-comments-empty">

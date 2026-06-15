@@ -1282,8 +1282,21 @@ body::after {
     box-shadow: 0 20px 40px rgba(0,0,0,0.28);
 }
 
-.car-comments-header .car-detail-section-title {
+.car-comments-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     margin-bottom: 1rem;
+}
+
+.car-comments-header .car-detail-section-title {
+    margin-bottom: 0;
+}
+
+.car-comments-icon {
+    width: 1.35rem;
+    height: 1.35rem;
+    object-fit: contain;
 }
 
 .car-comments-empty,

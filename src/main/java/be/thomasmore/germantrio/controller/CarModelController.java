@@ -4,6 +4,7 @@ import be.thomasmore.germantrio.model.AppUser;
 import be.thomasmore.germantrio.model.CarModel;
 import be.thomasmore.germantrio.repository.AppUserRepository;
 import be.thomasmore.germantrio.repository.CarModelRepository;
+import be.thomasmore.germantrio.repository.CommentRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,10 +19,14 @@ public class CarModelController {
 
     private final CarModelRepository carModelRepository;
     private final AppUserRepository appUserRepository;
+    private final CommentRepository commentRepository;
 
-    public CarModelController(CarModelRepository carModelRepository, AppUserRepository appUserRepository) {
+    public CarModelController(CarModelRepository carModelRepository,
+                              AppUserRepository appUserRepository,
+                              CommentRepository commentRepository) {
         this.carModelRepository = carModelRepository;
         this.appUserRepository = appUserRepository;
+        this.commentRepository = commentRepository;
     }
 
     @Transactional(readOnly = true)
@@ -45,6 +50,7 @@ public class CarModelController {
             model.addAttribute("brandId", currentCar.getBrand().getId());
             model.addAttribute("isFavorite", isFavorite);
             model.addAttribute("isAuthenticatedUser", isAuthenticatedUser);
+            model.addAttribute("comments", commentRepository.findByCarModelIdAndParentCommentIsNullOrderByCreatedAtDesc(currentCar.getId()));
             return "carmodeldetail";
         }
         return "redirect:/error?message=Car%20model%20not%20found";

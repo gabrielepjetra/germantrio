@@ -42,6 +42,20 @@
       </div>
     </div>
 
+    <div class="car-detail-top-nav">
+      <a th:if="${previousCar != null}"
+         th:href="@{|/carmodels/${previousCar.id}|}"
+         class="btn btn-outline-dark px-4 py-2">&larr; Previous model</a>
+
+      <span th:unless="${previousCar != null}" class="btn btn-outline-dark px-4 py-2 disabled">Previous model</span>
+
+      <a th:if="${nextCar != null}"
+         th:href="@{|/carmodels/${nextCar.id}|}"
+         class="btn btn-outline-dark px-4 py-2">Next model &rarr;</a>
+
+      <span th:unless="${nextCar != null}" class="btn btn-outline-dark px-4 py-2 disabled">Next model</span>
+    </div>
+
     <div class="car-detail-layout">
       <section class="car-detail-image-panel">
         <img th:src="${car.imageUrl}"
@@ -187,7 +201,19 @@
     </section>
 
     <div class="car-detail-footer">
-      <a th:href="@{|/brands/${brandId}|}" class="btn btn-outline-dark px-4 py-2">&larr; Back to Brand</a>
+      <a th:if="${previousCar != null}"
+         th:href="@{|/carmodels/${previousCar.id}|}"
+         class="btn btn-outline-dark px-4 py-2">&larr; Previous model</a>
+
+      <span th:unless="${previousCar != null}" class="btn btn-outline-dark px-4 py-2 disabled">Previous model</span>
+
+      <a th:href="@{|/brands/${brandId}|}" class="btn btn-outline-dark px-4 py-2">Back to Brand</a>
+
+      <a th:if="${nextCar != null}"
+         th:href="@{|/carmodels/${nextCar.id}|}"
+         class="btn btn-outline-dark px-4 py-2">Next model &rarr;</a>
+
+      <span th:unless="${nextCar != null}" class="btn btn-outline-dark px-4 py-2 disabled">Next model</span>
     </div>
   </section>
 </main>

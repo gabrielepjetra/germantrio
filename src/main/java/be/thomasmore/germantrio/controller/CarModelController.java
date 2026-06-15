@@ -48,6 +48,12 @@ public class CarModelController {
 
             model.addAttribute("car", currentCar);
             model.addAttribute("brandId", currentCar.getBrand().getId());
+            model.addAttribute("previousCar", carModelRepository
+                    .findFirstByBrandIdAndIdLessThanOrderByIdDesc(currentCar.getBrand().getId(), currentCar.getId())
+                    .orElse(null));
+            model.addAttribute("nextCar", carModelRepository
+                    .findFirstByBrandIdAndIdGreaterThanOrderByIdAsc(currentCar.getBrand().getId(), currentCar.getId())
+                    .orElse(null));
             model.addAttribute("isFavorite", isFavorite);
             model.addAttribute("isAuthenticatedUser", isAuthenticatedUser);
             model.addAttribute("comments", commentRepository.findByCarModelIdAndParentCommentIsNullOrderByCreatedAtDesc(currentCar.getId()));

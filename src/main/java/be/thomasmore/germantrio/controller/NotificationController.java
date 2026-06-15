@@ -26,9 +26,22 @@ public class NotificationController {
 
         String email = principal.getName();
         List<Notification> notifications = notificationRepository.findByRecipientEmailOrderByCreatedAtDesc(email);
+        long unreadNotificationCount = notificationRepository.countByRecipientEmailAndReadFalse(email);
 
         model.addAttribute("notifications", notifications);
-        model.addAttribute("unreadNotificationCount", notificationRepository.countByRecipientEmailAndReadFalse(email));
+        model.addAttribute("unreadNotificationCount", unreadNotificationCount);
+
+        boolean hasUnreadNotifications = false;
+        for (Notification notification : notifications) {
+            if (!notification.isRead()) {
+                notification.setRead(true);
+                hasUnreadNotifications = true;
+            }
+        }
+
+        if (hasUnreadNotifications) {
+            notificationRepository.saveAll(notifications);
+        }
 
         return "notifications";
     }

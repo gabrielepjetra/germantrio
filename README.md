@@ -6,7 +6,7 @@ Dit is een website die ik gemaakt heb voor mensen die moelijk een keuze kunnen m
 * Waarom? Ik had het ook moeilijk bij het kiezen van mijn auto, en aangezien dat het geen t-shirt of jas is dat je kunt terug brengen, had ik graag zo een website gehad toen ik het nodig had.
 
 ## 2. User story mapping
-![User story map](readme/images/user_story_map.jpeg)
+![User story map](readme/images/user_story_map.jpg)
 
 ## 3. Personas
 ### 1) Lena - De praktische premium-zoeker
@@ -28,12 +28,42 @@ Dit is een website die ik gemaakt heb voor mensen die moelijk een keuze kunnen m
 * **Doelen:** De ultieme, toekomstbestendige en comfortabele elektrische reisauto selecteren voor lange zakelijke ritten.
 * **Pijnpunten:** Tijdgebrek voor bezoeken aan meerdere fysieke showrooms en een absolute hekel aan trage, onoverzichtelijke software in auto's.
 
+# Conceptueel Model
+### Dit is hoe dat mijn web app gaat werken
+
+In deze applicatie staan automerken en automodellen centraal. Een **Brand** stelt een merk voor, zoals Audi, BMW of Mercedes-Benz. Een **Brand** heeft meerdere **CarModel** objecten. Elk **CarModel** hoort bij precies ��n **Brand** en bevat technische gegevens zoals motor, pk, koppel, aandrijving, gewicht, 0-100 tijd en basisprijs.
+
+Een **AppUser** is een geregistreerde gebruiker. Een gebruiker kan meerdere automodellen opslaan als favoriete auto's. Omdat meerdere gebruikers dezelfde auto kunnen opslaan, is dit een many-to-many relatie tussen **AppUser** en **CarModel**.
+
+Bij een **CarModel** kunnen gebruikers reacties plaatsen. Een **Comment** hoort altijd bij ��n gebruiker en ��n automodel. Een comment kan ook antwoorden hebben. Die antwoorden zijn opnieuw comments, maar met een parent comment. Zo blijft het systeem eenvoudig: een hoofdcomment kan meerdere replies hebben.
+
+Een **Notification** wordt gebruikt om gebruikers te verwittigen, bijvoorbeeld wanneer iemand antwoordt op hun comment of wanneer een admin een globale melding stuurt. Een notification hoort bij ��n gebruiker en kan optioneel verwijzen naar een automodel.
+
+Een **BlacklistedEmail** is een e-mailadres dat niet meer mag registreren. Admins kunnen gebruikers beheren. Ze kunnen een gebruiker bannen, waardoor die niet meer kan inloggen, of tijdelijk muten, waardoor die gebruiker geen comments of replies kan plaatsen.
+
+![Conceptueel model](readme/images/conceptueel_diagram_germantrio.png)
+
 # 💻 Functionale analyse
 ## 1. Wireframes
 ### Dit is hoe mijn homepagina ongeveer eruit gaat zien.
 ![Homepage wireframe](readme/images/wireframe_homepage.jpg)
 ### Dit is hoe ik wil dat mijn compare pagina ongeveer eruit ziet.
 ![Comparator tool page wireframe](readme/images/wireframe_compare.jpg)
-## 2. Conceptueel Model
-### Dit is hoe dat mijn web app gaat werken
-![UML diagram](readme/images/usecase.png)
+
+## 2 Use case diagram
+
+![Usecase diagram](readme/images/usecase_diagram_germantrio.png)
+
+## 3 Activity diagram
+
+### Twee auto's vergelijken
+
+![Vergelijking van 2 autos](readme/images/activity_vergelijken_germantrio.png)
+
+### Comment, reply en notificatie
+
+![Comment, reply en notificatie](readme/images/activity_comment_germantrio.png)
+
+## 4 Class diagram
+
+![Class diagram](readme/images/class_diagram_germantrio.png)

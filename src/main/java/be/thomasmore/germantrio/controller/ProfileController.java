@@ -2,7 +2,9 @@ package be.thomasmore.germantrio.controller;
 
 import be.thomasmore.germantrio.model.AppUser;
 import be.thomasmore.germantrio.model.CarModel;
+import be.thomasmore.germantrio.model.Notification;
 import be.thomasmore.germantrio.repository.AppUserRepository;
+import be.thomasmore.germantrio.repository.NotificationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,9 +19,12 @@ import java.util.Optional;
 public class ProfileController {
 
     private final AppUserRepository appUserRepository;
+    private final NotificationRepository notificationRepository;
 
-    public ProfileController(AppUserRepository appUserRepository) {
+    public ProfileController(AppUserRepository appUserRepository,
+                             NotificationRepository notificationRepository) {
         this.appUserRepository = appUserRepository;
+        this.notificationRepository = notificationRepository;
     }
 
     @Transactional(readOnly = true)
@@ -40,11 +45,15 @@ public class ProfileController {
         List<CarModel> favoriteCarsPreview = favoriteCars.stream()
                 .limit(2)
                 .toList();
+        List<Notification> notifications = notificationRepository.findByRecipientEmailOrderByCreatedAtDesc(user.getEmail());
+        long unreadNotificationCount = notificationRepository.countByRecipientEmailAndReadFalse(user.getEmail());
 
         model.addAttribute("user", user);
         model.addAttribute("favoriteCars", favoriteCars);
         model.addAttribute("favoriteCarsPreview", favoriteCarsPreview);
         model.addAttribute("favoriteCarsCount", favoriteCars.size());
+        model.addAttribute("notifications", notifications);
+        model.addAttribute("unreadNotificationCount", unreadNotificationCount);
 
         return "profile";
     }

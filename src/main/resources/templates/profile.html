@@ -115,8 +115,34 @@
         </article>
 
         <article class="profile-placeholder-card">
-            <h2>Notifications</h2>
-            <p>Your notifications will appear here later.</p>
+            <div class="profile-section-header">
+                <h2 class="m-0">Notifications</h2>
+                <span th:if="${unreadNotificationCount > 0}"
+                      class="profile-notification-count"
+                      th:text="${unreadNotificationCount}">0</span>
+            </div>
+
+            <p th:if="${#lists.isEmpty(notifications)}">You have no notifications yet.</p>
+
+            <div th:unless="${#lists.isEmpty(notifications)}" class="profile-notification-list">
+                <article th:each="notification : ${notifications}"
+                         class="profile-notification-item"
+                         th:classappend="${!notification.read} ? ' profile-notification-unread' : ' profile-notification-read'">
+                    <div class="profile-notification-main">
+                        <span class="profile-notification-dot" aria-hidden="true"></span>
+                        <div>
+                            <p th:text="${notification.message}">Notification message</p>
+                            <time th:text="${#temporals.format(notification.createdAt, 'dd MMM yyyy HH:mm')}">01 Jan 2025 12:00</time>
+                        </div>
+                    </div>
+
+                    <a th:if="${notification.relatedCarModel != null}"
+                       th:href="@{|/carmodels/${notification.relatedCarModel.id}|}"
+                       class="btn btn-outline-dark profile-notification-link">
+                        View
+                    </a>
+                </article>
+            </div>
         </article>
     </section>
 </main>

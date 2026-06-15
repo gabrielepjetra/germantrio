@@ -267,3 +267,8 @@ VALUES
 ('Agree on the RS3. It feels much more planted than the size suggests.', '2025-01-02 11:05:00', 16, 1, 1),
 ('The A3 is probably the sensible choice, but the RS3 is hard to ignore if budget allows.', '2025-01-04 10:20:00', 2, 1, 3),
 ('AWD really changes the character in bad weather. The RS5 feels very confidence inspiring.', '2025-01-05 19:00:00', 45, 1, 4);
+
+-- Test notifications
+INSERT INTO notification (message, created_at, is_read, recipient_id, related_car_model_id)
+VALUES
+('gab replied to your comment on Audi RS3 Sedan.', '2025-01-02 11:05:00', FALSE, 1, 16);

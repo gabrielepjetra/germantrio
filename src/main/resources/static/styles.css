@@ -723,6 +723,75 @@ body::after {
     margin-top: 1rem;
 }
 
+.profile-notification-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    padding: 0 0.45rem;
+    border-radius: 999px;
+    background-color: var(--audi-red);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.profile-notification-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.profile-notification-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+}
+
+.profile-notification-unread {
+    border-color: rgba(187,10,48,0.5);
+}
+
+.profile-notification-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    min-width: 0;
+}
+
+.profile-notification-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    flex: 0 0 0.55rem;
+    margin-top: 0.45rem;
+    border-radius: 999px;
+    background-color: rgba(255,255,255,0.28);
+}
+
+.profile-notification-unread .profile-notification-dot {
+    background-color: var(--audi-red);
+}
+
+.profile-notification-main p {
+    margin-bottom: 0.25rem;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.profile-notification-main time {
+    color: var(--dark-gray);
+    font-size: 0.82rem;
+}
+
+.profile-notification-link {
+    flex: 0 0 auto;
+}
+
 .favorites-page {
     max-width: 1100px;
 }
@@ -1466,6 +1535,15 @@ body::after {
 
     .profile-favorite-actions {
         align-items: stretch;
+    }
+
+    .profile-notification-item {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .profile-notification-link {
+        align-self: flex-start;
     }
 
     .favorites-header {

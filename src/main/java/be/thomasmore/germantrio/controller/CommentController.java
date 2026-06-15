@@ -3,9 +3,11 @@ package be.thomasmore.germantrio.controller;
 import be.thomasmore.germantrio.model.AppUser;
 import be.thomasmore.germantrio.model.CarModel;
 import be.thomasmore.germantrio.model.Comment;
+import be.thomasmore.germantrio.model.Notification;
 import be.thomasmore.germantrio.repository.AppUserRepository;
 import be.thomasmore.germantrio.repository.CarModelRepository;
 import be.thomasmore.germantrio.repository.CommentRepository;
+import be.thomasmore.germantrio.repository.NotificationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,13 +23,16 @@ public class CommentController {
     private final CommentRepository commentRepository;
     private final CarModelRepository carModelRepository;
     private final AppUserRepository appUserRepository;
+    private final NotificationRepository notificationRepository;
 
     public CommentController(CommentRepository commentRepository,
                              CarModelRepository carModelRepository,
-                             AppUserRepository appUserRepository) {
+                             AppUserRepository appUserRepository,
+                             NotificationRepository notificationRepository) {
         this.commentRepository = commentRepository;
         this.carModelRepository = carModelRepository;
         this.appUserRepository = appUserRepository;
+        this.notificationRepository = notificationRepository;
     }
 
     @PostMapping("/carmodels/{carId}/comments")
@@ -101,6 +106,19 @@ public class CommentController {
         reply.setCreatedAt(LocalDateTime.now());
 
         commentRepository.save(reply);
+
+        AppUser replyAuthor = appUser.get();
+        AppUser parentAuthor = parentComment.get().getAppUser();
+
+        if (replyAuthor.getId() != parentAuthor.getId()) {
+            Notification notification = new Notification();
+            notification.setMessage(replyAuthor.getUsername() + " replied to your comment on " + carModel.get().getName() + ".");
+            notification.setRecipient(parentAuthor);
+            notification.setRelatedCarModel(carModel.get());
+            notification.setCreatedAt(LocalDateTime.now());
+            notification.setRead(false);
+            notificationRepository.save(notification);
+        }
 
         return "redirect:/carmodels/" + carId;
     }

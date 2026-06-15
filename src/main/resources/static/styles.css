@@ -1205,6 +1205,129 @@ body::after {
     justify-content: center;
 }
 
+.car-comments-panel {
+    padding: 1.5rem;
+    background: rgba(20, 20, 30, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+.car-comments-header .car-detail-section-title {
+    margin-bottom: 1rem;
+}
+
+.car-comments-empty,
+.car-comments-login {
+    margin-bottom: 1rem;
+    color: #cbd5e1;
+}
+
+.car-comments-login a {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.car-comments-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.car-comment-card {
+    padding: 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+}
+
+.car-comment-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.car-comment-meta strong {
+    color: #ffffff;
+}
+
+.car-comment-meta span {
+    color: var(--dark-gray);
+    font-size: 0.85rem;
+}
+
+.car-comment-card p {
+    margin-bottom: 0;
+    color: #d1d5db;
+}
+
+.car-comment-replies {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid rgba(255,255,255,0.14);
+}
+
+.car-comment-reply {
+    padding: 0.85rem;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+}
+
+.car-comment-form {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.car-comment-form label {
+    color: var(--dark-gray);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+}
+
+.car-comment-form .form-control {
+    background-color: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.16);
+    color: #ffffff;
+}
+
+.car-comment-form .form-control:focus {
+    border-color: var(--audi-red);
+    box-shadow: 0 0 0 0.2rem rgba(187,10,48,0.25);
+}
+
+.car-comment-submit {
+    justify-self: start;
+}
+
+.car-reply-form {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.car-reply-form .form-control {
+    background-color: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.16);
+    color: #ffffff;
+}
+
+.car-reply-form .form-control:focus {
+    border-color: var(--audi-red);
+    box-shadow: 0 0 0 0.2rem rgba(187,10,48,0.25);
+}
+
+.car-reply-submit {
+    justify-self: start;
+}
+
 @media (max-width: 991px) {
     .compare-header {
         align-items: flex-start;
@@ -1285,6 +1408,16 @@ body::after {
 }
 
 @media (max-width: 576px) {
+    .car-comment-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .car-comment-replies {
+        padding-left: 0.75rem;
+    }
+
     .auth-links {
         flex-direction: column;
         align-items: center;

@@ -116,6 +116,65 @@
       </section>
     </div>
 
+    <section class="car-comments-panel">
+      <div class="car-comments-header">
+        <h2 class="car-detail-section-title">Comments</h2>
+      </div>
+
+      <div th:if="${#lists.isEmpty(comments)}" class="car-comments-empty">
+        No comments yet. Be the first to comment.
+      </div>
+
+      <div th:unless="${#lists.isEmpty(comments)}" class="car-comments-list">
+        <article th:each="comment : ${comments}" class="car-comment-card">
+          <div class="car-comment-meta">
+            <strong th:text="${comment.appUser.username}">username</strong>
+            <span th:text="${#temporals.format(comment.createdAt, 'dd MMM yyyy HH:mm')}">01 Jan 2025 12:00</span>
+          </div>
+          <p th:text="${comment.content}">Comment content</p>
+
+          <div th:if="${!#lists.isEmpty(comment.replies)}" class="car-comment-replies">
+            <article th:each="reply : ${comment.replies}" class="car-comment-reply">
+              <div class="car-comment-meta">
+                <strong th:text="${reply.appUser.username}">username</strong>
+                <span th:text="${#temporals.format(reply.createdAt, 'dd MMM yyyy HH:mm')}">01 Jan 2025 12:00</span>
+              </div>
+              <p th:text="${reply.content}">Reply content</p>
+            </article>
+          </div>
+
+          <form th:if="${isAuthenticatedUser}"
+                th:action="@{|/carmodels/${car.id}/comments/${comment.id}/replies|}"
+                method="post"
+                class="car-reply-form">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <textarea name="content" class="form-control" rows="2" placeholder="Write a reply" required></textarea>
+            <button type="submit" class="btn btn-outline-dark car-reply-submit">Reply</button>
+          </form>
+        </article>
+      </div>
+
+      <form th:if="${isAuthenticatedUser}"
+            th:action="@{|/carmodels/${car.id}/comments|}"
+            method="post"
+            class="car-comment-form">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+        <label for="commentContent">Leave a comment</label>
+        <textarea id="commentContent"
+                  name="content"
+                  class="form-control"
+                  rows="4"
+                  required></textarea>
+
+        <button type="submit" class="btn btn-outline-dark car-comment-submit">Post Comment</button>
+      </form>
+
+      <p th:unless="${isAuthenticatedUser}" class="car-comments-login">
+        <a th:href="@{/login}">Log in to leave a comment.</a>
+      </p>
+    </section>
+
     <div class="car-detail-footer">
       <a th:href="@{|/brands/${brandId}|}" class="btn btn-outline-dark px-4 py-2">&larr; Back to Brand</a>
     </div>

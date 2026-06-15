@@ -125,7 +125,7 @@
             <p th:if="${#lists.isEmpty(notifications)}">You have no notifications yet.</p>
 
             <div th:unless="${#lists.isEmpty(notifications)}" class="profile-notification-list">
-                <article th:each="notification : ${notifications}"
+                <article th:each="notification : ${notificationsPreview}"
                          class="profile-notification-item"
                          th:classappend="${!notification.read} ? ' profile-notification-unread' : ' profile-notification-read'">
                     <div class="profile-notification-main">
@@ -143,6 +143,10 @@
                     </a>
                 </article>
             </div>
+
+            <a th:if="${notificationsCount > 0}" th:href="@{/notifications}" class="btn btn-outline-dark profile-notification-view-all">
+                View all notifications
+            </a>
         </article>
     </section>
 </main>

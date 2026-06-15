@@ -50,6 +50,18 @@
                        th:classappend="${currentUrl == '/profile'} ? 'active'">Profile</a>
                 </li>
 
+                <li class="nav-item py-2 ms-2"
+                    sec:authorize="isAuthenticated()"
+                    th:with="unreadNotificationCount=${@notificationRepository.countByRecipientEmailAndReadFalse(#authentication.name)}">
+                    <a class="nav-notification-button" th:href="@{/notifications}">
+                        <img th:src="${unreadNotificationCount > 0} ? @{/foto/icons/notification-alert-icon.png} : @{/foto/icons/notification-bell-icon.png}"
+                             th:alt="${unreadNotificationCount > 0} ? 'Unread notifications' : 'Notifications'">
+                        <span th:if="${unreadNotificationCount > 0}"
+                              class="nav-notification-badge"
+                              th:text="${unreadNotificationCount}">0</span>
+                    </a>
+                </li>
+
                 <li class="nav-item py-2 ms-2" sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" method="post" class="nav-logout-form">
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">

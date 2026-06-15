@@ -46,6 +46,9 @@ public class ProfileController {
                 .limit(2)
                 .toList();
         List<Notification> notifications = notificationRepository.findByRecipientEmailOrderByCreatedAtDesc(user.getEmail());
+        List<Notification> notificationsPreview = notifications.stream()
+                .limit(2)
+                .toList();
         long unreadNotificationCount = notificationRepository.countByRecipientEmailAndReadFalse(user.getEmail());
 
         model.addAttribute("user", user);
@@ -53,6 +56,8 @@ public class ProfileController {
         model.addAttribute("favoriteCarsPreview", favoriteCarsPreview);
         model.addAttribute("favoriteCarsCount", favoriteCars.size());
         model.addAttribute("notifications", notifications);
+        model.addAttribute("notificationsPreview", notificationsPreview);
+        model.addAttribute("notificationsCount", notifications.size());
         model.addAttribute("unreadNotificationCount", unreadNotificationCount);
 
         return "profile";

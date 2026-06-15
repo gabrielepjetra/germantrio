@@ -1,119 +1,119 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head th:replace="~{fragments :: head('Home - The German Trio')}"></head>
-  <body class="d-flex flex-column min-vh-100">
-    <nav th:replace="~{fragments :: navbar}"></nav>
+<head th:replace="~{fragments :: head('Home - The German Trio')}"></head>
+<body class="d-flex flex-column min-vh-100">
+<nav th:replace="~{fragments :: navbar}"></nav>
 
-    <main class="container py-5 py-lg-6">
+<main class="container py-5 py-lg-6">
 
-      <section class="text-center mb-5">
+    <section class="text-center mb-5">
         <h1 class="display-4 fw-bold text-custom">The German Trio</h1>
         <h3 class="fw-light text-custom mb-4">Audi, BMW or Mercedes-Benz?</h3>
         <p class="lead mb-0">Compare Germany's three most iconic automotive brands.</p>
-      </section>
+    </section>
 
-      <section class="mb-5">
+    <section class="mb-5">
         <h2 class="text-center text-custom fw-bold mb-4">Choose a Brand</h2>
 
         <div class="row g-4 justify-content-center">
-          <div class="col-12 col-md-4" th:each="brand : ${brands}">
-            <a th:href="@{/brands/{id}(id=${brand.id})}" class="text-decoration-none">
-              <div class="card h-100 shadow-sm brand-card text-center">
-                <div class="card-body p-4">
+            <div class="col-12 col-md-4" th:each="brand : ${brands}">
+                <a th:href="@{/brands/{id}(id=${brand.id})}" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm brand-card text-center">
+                        <div class="card-body p-4">
 
-                  <img th:if="${brand.name == 'BMW'}"
-                       th:src="@{/foto/bmw/bmw-logo.png}"
-                       class="brand-logo mb-4"
-                       alt="BMW logo"
-                       style="width: 100px;">
+                            <img th:if="${brand.name == 'BMW'}"
+                                 th:src="@{/foto/bmw/bmw-logo.png}"
+                                 class="brand-logo mb-4"
+                                 alt="BMW logo"
+                                 style="width: 100px;">
 
-                  <img th:if="${brand.name == 'Audi'}"
-                       th:src="@{/foto/audi/audi-logo.png}"
-                       class="brand-logo mb-4"
-                       alt="Audi logo"
-                       style="height: 100px;">
+                            <img th:if="${brand.name == 'Audi'}"
+                                 th:src="@{/foto/audi/audi-logo.png}"
+                                 class="brand-logo mb-4"
+                                 alt="Audi logo"
+                                 style="height: 100px;">
 
-                  <img th:if="${brand.name == 'Mercedes' || brand.name == 'Mercedes-Benz'}"
-                       th:src="@{/foto/mercedes/mercedes-logo.png}"
-                       class="brand-logo mb-4"
-                       alt="Mercedes-Benz logo"
-                       style="width: 100px;">
+                            <img th:if="${brand.name == 'Mercedes' || brand.name == 'Mercedes-Benz'}"
+                                 th:src="@{/foto/mercedes/mercedes-logo.png}"
+                                 class="brand-logo mb-4"
+                                 alt="Mercedes-Benz logo"
+                                 style="width: 100px;">
 
-                  <h3 class="card-title text-custom fw-bold" th:text="${brand.name}">
-                    Brand name
-                  </h3>
-                  <p class="card-text text-dark-gray mb-0">
-                    View all available models from this brand.
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
+                            <h3 class="card-title text-custom fw-bold" th:text="${brand.name}">
+                                Brand name
+                            </h3>
+                            <p class="card-text text-dark-gray mb-0">
+                                View all available models from this brand.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <section class="mb-5">
+    <section class="mb-5">
         <h2 class="text-center text-custom fw-bold mb-4">What can you do here?</h2>
 
         <div class="row g-4">
-          <div class="col-12 col-md-4">
-            <a href="" class="text-decoration-none">
-              <div class="card h-100 shadow-sm bg-card">
-                <div class="card-body text-center p-4">
-                  <img th:src="@{/foto/icons/registration-icon-white.png}"
-                       class="brand-logo mb-4"
-                       alt="Account create"
-                       style="width: 100px;">
+            <div class="col-12 col-md-4">
 
-                  <h4 class="card-title text-custom fw-bold">Create an Account</h4>
-                  <p class="card-text text-dark-gray">
-                    Register to save your favourite car models, manage your profile and receive notifications.
-                  </p>
+                <div class="card h-100 shadow-sm bg-card">
+                    <div class="card-body text-center p-4">
+                        <img th:src="@{/foto/icons/registration-icon-white.png}"
+                             class="brand-logo mb-4"
+                             alt="Account create"
+                             style="width: 100px;">
+
+                        <h4 class="card-title text-custom fw-bold">Create an Account</h4>
+                        <p class="card-text text-dark-gray">
+                            Register to save your favourite car models, manage your profile and receive notifications.
+                        </p>
+                    </div>
                 </div>
-              </div>
-            </a>
-          </div>
 
-          <div class="col-12 col-md-4">
-            <a href="" class="text-decoration-none">
-              <div class="card h-100 shadow-sm bg-card">
-                <div class="card-body text-center p-4">
-                  <img th:src="@{/foto/icons/car-search-white.png}"
-                       class="brand-logo mb-4"
-                       alt="Search car"
-                       style="width: 100px;">
+            </div>
 
-                  <h4 class="card-title text-custom fw-bold">Browse Models</h4>
-                  <p class="card-text text-dark-gray">
-                    Explore models from Audi, BMW and Mercedes-Benz and view their main specifications.
-                  </p>
+            <div class="col-12 col-md-4">
+
+                <div class="card h-100 shadow-sm bg-card">
+                    <div class="card-body text-center p-4">
+                        <img th:src="@{/foto/icons/car-search-white.png}"
+                             class="brand-logo mb-4"
+                             alt="Search car"
+                             style="width: 100px;">
+
+                        <h4 class="card-title text-custom fw-bold">Browse Models</h4>
+                        <p class="card-text text-dark-gray">
+                            Explore models from Audi, BMW and Mercedes-Benz and view their main specifications.
+                        </p>
+                    </div>
                 </div>
-              </div>
-            </a>
-          </div>
 
-          <div class="col-12 col-md-4">
-            <a href="" class="text-decoration-none">
-              <div class="card h-100 shadow-sm bg-card">
-                <div class="card-body text-center p-4">
-                  <img th:src="@{/foto/icons/compare-icon-white.png}"
-                       class="brand-logo mb-4"
-                       alt="Account create"
-                       style="width: 100px;">
+            </div>
 
-                  <h4 class="card-title text-custom fw-bold">Compare Cars</h4>
-                  <p class="card-text text-dark-gray">
-                    Send models to the comparison tool and compare their details side by side.
-                  </p>
+            <div class="col-12 col-md-4">
+
+                <div class="card h-100 shadow-sm bg-card">
+                    <div class="card-body text-center p-4">
+                        <img th:src="@{/foto/icons/compare-icon-white.png}"
+                             class="brand-logo mb-4"
+                             alt="Account create"
+                             style="width: 100px;">
+
+                        <h4 class="card-title text-custom fw-bold">Compare Cars</h4>
+                        <p class="card-text text-dark-gray">
+                            Send models to the comparison tool and compare their details side by side.
+                        </p>
+                    </div>
                 </div>
-              </div>
-            </a>
-          </div>
+
+            </div>
         </div>
-      </section>
+    </section>
 
-    </main>
+</main>
 
-    <footer th:replace="~{fragments :: footer}"></footer>
-  </body>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
 </html>

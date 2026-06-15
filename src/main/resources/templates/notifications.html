@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Notifications - The German Trio')}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="~{fragments :: navbar}"></nav>
+
+<main class="container py-5 flex-grow-1">
+    <section class="notifications-page mx-auto">
+        <div class="notifications-header">
+            <a th:href="@{/profile}" class="btn btn-outline-dark">&larr; Back to Profile</a>
+
+            <div class="notifications-title">
+                <p class="brand-detail-label mb-2">Account Updates</p>
+                <h1>Notifications</h1>
+            </div>
+        </div>
+
+        <section class="profile-placeholder-card">
+            <div class="profile-section-header">
+                <h2 class="m-0">Notifications</h2>
+                <span th:if="${unreadNotificationCount > 0}"
+                      class="profile-notification-count"
+                      th:text="${unreadNotificationCount}">0</span>
+            </div>
+
+            <p th:if="${#lists.isEmpty(notifications)}">You have no notifications yet.</p>
+
+            <div th:unless="${#lists.isEmpty(notifications)}" class="profile-notification-list notifications-list">
+                <article th:each="notification : ${notifications}"
+                         class="profile-notification-item"
+                         th:classappend="${!notification.read} ? ' profile-notification-unread' : ' profile-notification-read'">
+                    <div class="profile-notification-main">
+                        <span class="profile-notification-dot" aria-hidden="true"></span>
+                        <div>
+                            <p th:text="${notification.message}">Notification message</p>
+                            <time th:text="${#temporals.format(notification.createdAt, 'dd MMM yyyy HH:mm')}">01 Jan 2025 12:00</time>
+                        </div>
+                    </div>
+
+                    <a th:if="${notification.relatedCarModel != null}"
+                       th:href="@{|/carmodels/${notification.relatedCarModel.id}|}"
+                       class="btn btn-outline-dark profile-notification-link">
+                        View Car
+                    </a>
+                </article>
+            </div>
+        </section>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

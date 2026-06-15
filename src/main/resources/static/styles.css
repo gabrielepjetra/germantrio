@@ -166,6 +166,13 @@ body {
     color: #fff;
 }
 
+select,
+select.form-select,
+select option {
+    background-color: #ffffff;
+    color: #000000;
+}
+
 /* BORDERS */
 .border-audi-red {
     border-color: var(--audi-red) !important;

@@ -121,7 +121,8 @@
                                     <option th:each="option : ${transmissions}"
                                             th:value="${option}"
                                             th:text="${option}"
-                                            th:selected="${selectedTransmission != null and option == selectedTransmission}">
+                                            th:selected="${selectedTransmission != null and option == selectedTransmission}"
+                                            class="text-dark">
                                         Automatic
                                     </option>
                                 </select>

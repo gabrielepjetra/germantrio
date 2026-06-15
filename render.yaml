@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: germantrio
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: JAVA_VERSION
+        value: 21
+      - key: H2_CONSOLE_NEEDED
+        value: false

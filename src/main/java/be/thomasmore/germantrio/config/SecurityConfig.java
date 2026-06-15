@@ -1,5 +1,6 @@
 package be.thomasmore.germantrio.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,10 +15,16 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            @Value("${security.h2-console-needed:true}") boolean h2ConsoleNeeded) throws Exception {
         http
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.GET,
+                .authorizeHttpRequests(auth -> {
+                    if (h2ConsoleNeeded) {
+                        auth.requestMatchers("/h2-console/**").permitAll();
+                    }
+
+                    auth.requestMatchers(HttpMethod.GET,
                                 "/",
                                 "/index",
                                 "/brands/**",
@@ -48,8 +55,8 @@ public class SecurityConfig {
                                 "/notifications/**"
                         ).authenticated()
                         .requestMatchers("/admin", "/admin/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                )
+                        .anyRequest().authenticated();
+                })
                 .formLogin(form -> form
                         .loginPage("/login")
                         .usernameParameter("email")
@@ -63,6 +70,12 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/")
                         .permitAll()
                 );
+
+        if (h2ConsoleNeeded) {
+            http
+                    .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
+                    .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()));
+        }
 
         return http.build();
     }

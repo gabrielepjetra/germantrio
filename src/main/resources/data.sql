@@ -247,3 +247,23 @@ VALUES
 ('Mercedes EQS SUV 450+','/foto/mercedes/gle.png','Automatic','Single Motor','Electric',360,568,'RWD',2700,6.20,125000,3,'2025-01-01 00:00:00','2025-01-01 00:00:00'),
 -- EQV
 ('Mercedes EQV 300','/foto/mercedes/gle.png','Automatic','Single Motor','Electric',204,365,'FWD',2650,10.0,85000,3,'2025-01-01 00:00:00','2025-01-01 00:00:00');
+
+-- Test users
+INSERT INTO app_user (first_name, last_name, username, birth_date, email, password, profile_photo_url, created_at, admin)
+VALUES ('Gabriele', 'Pjetra', 'gab', '1999-12-23', 'gabriele@example.com', '$2a$10$jz3xMj7oXPkOpprMP9FSJ.9Cik97EWCDMJFur1s1a8y.9FkEVJa9C', NULL, '2025-01-01 00:00:00', TRUE);
+
+-- Test comments
+INSERT INTO car_comment (content, created_at, car_model_id, app_user_id)
+VALUES
+('The RS3 feels incredibly sharp for a compact sedan. The launch traction is the real party trick.', '2025-01-02 10:15:00', 16, 1),
+('The e-tron GT is heavier than it looks, but the instant torque makes it feel effortless in normal driving.', '2025-01-03 14:30:00', 7, 1),
+('For the price, the A3 is still one of the most balanced daily cars here. Comfortable, clean interior, and enough power.', '2025-01-04 09:45:00', 2, 1),
+('The M3 has the more playful rear-drive feeling, but the RS5 feels easier to drive quickly in bad weather.', '2025-01-05 18:20:00', 45, 1),
+('The GLC makes sense as a family car. It is not the fastest option, but the comfort and AWD setup are strong points.', '2025-01-06 12:10:00', 67, 1);
+
+-- Test replies
+INSERT INTO car_comment (content, created_at, car_model_id, app_user_id, parent_comment_id)
+VALUES
+('Agree on the RS3. It feels much more planted than the size suggests.', '2025-01-02 11:05:00', 16, 1, 1),
+('The A3 is probably the sensible choice, but the RS3 is hard to ignore if budget allows.', '2025-01-04 10:20:00', 2, 1, 3),
+('AWD really changes the character in bad weather. The RS5 feels very confidence inspiring.', '2025-01-05 19:00:00', 45, 1, 4);
